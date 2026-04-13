@@ -1,0 +1,2291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;">
+<title>Annuaire des prestataires travaillant pour le compte du CMO Settat</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ── Maroc Telecom palette ── */
+  --mt-red:    #E2001A;   /* rouge MT principal */
+  --mt-dark:   #A8001A;   /* rouge foncé */
+  --mt-deep:   #7A0012;   /* rouge très foncé – fonds */
+  --mt-light:  #FF4444;   /* rouge clair – hover */
+  --mt-pale:   #FFE5E5;   /* rose très pâle */
+  --white:     #FFFFFF;
+  --off-white: #F5F0F0;
+  --card-bg:   rgba(255,255,255,0.10);
+  --card-bg2:  rgba(255,255,255,0.06);
+  --card-bg3:  rgba(255,255,255,0.04);
+  --border:    rgba(255,255,255,0.18);
+  --border2:   rgba(255,255,255,0.10);
+  --text:      #FFFFFF;
+  --text-soft: rgba(255,255,255,0.85);
+  --muted:     rgba(255,255,255,0.55);
+  --accent:    #FFD700;   /* or/jaune pour accentuation */
+  --orange:    #FFB347;
+  --green:     #4ADE80;
+  --red-alert: #FF6B6B;
+  --purple:    #DDA0FF;
+  /* keep old names mapped so JS badge colours still work */
+  --gold:      #FFD700;
+  --gold-light:#FFE566;
+  --dark:      var(--mt-deep);
+  --dark-2:    rgba(120,0,18,0.85);
+  --dark-3:    rgba(255,255,255,0.08);
+  --dark-4:    rgba(255,255,255,0.05);
+  --red:       #FF6B6B;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background: linear-gradient(160deg, #7A0012 0%, #A8001A 35%, #E2001A 70%, #C0001A 100%);
+  background-attachment: fixed;
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+/* Subtle circular decorations like MT branding */
+body::after{
+  content:'';position:fixed;top:-200px;right:-200px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  pointer-events:none;z-index:0;
+}
+
+/* ── PAGE VIEWS ── */
+.page{display:none;}.page.active{display:block;}
+
+/* ── ALERT BANNER ── */
+#alertBanner{display:none;position:relative;z-index:100;background:rgba(0,0,0,0.25);border-bottom:1px solid rgba(255,255,255,0.2);padding:0 5vw;}
+#alertBanner.show{display:block;}
+.alert-inner{display:flex;align-items:flex-start;gap:14px;padding:14px 0;}
+.alert-icon{width:36px;height:36px;border-radius:10px;background:rgba(255,180,0,0.25);border:1px solid rgba(255,180,0,0.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:pulse-warn 2s ease-in-out infinite;}
+@keyframes pulse-warn{0%,100%{box-shadow:0 0 0 0 rgba(255,180,0,0.4)}50%{box-shadow:0 0 0 7px rgba(255,180,0,0)}}
+.alert-content{flex:1;}.alert-title{font-weight:700;font-size:0.88rem;color:var(--orange);margin-bottom:7px;}
+.alert-items{display:flex;flex-direction:column;gap:5px;}
+.alert-item{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--white);}
+.dot-exp{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.dot-critical{background:#FF6B6B;}.dot-warning{background:var(--orange);}
+.alert-dismiss{background:transparent;border:none;color:rgba(255,255,255,0.6);cursor:pointer;font-size:1.1rem;padding:4px;flex-shrink:0;}
+.alert-dismiss:hover{color:#fff;}
+
+/* ── HEADER ── */
+header{position:relative;padding:0 5vw;border-bottom:1px solid var(--border);overflow:hidden;background:rgba(0,0,0,0.15);}
+.header-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 120% at 0% 50%,rgba(255,255,255,0.06) 0%,transparent 70%);pointer-events:none;}
+.top-bar{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border);}
+.logo-badge{display:flex;align-items:center;gap:12px;}
+.logo-icon{width:44px;height:44px;background:rgba(255,255,255,0.95);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:pulse-icon 3s ease-in-out infinite;box-shadow:0 4px 14px rgba(0,0,0,0.2);}
+@keyframes pulse-icon{0%,100%{opacity:1}50%{opacity:0.85}}
+.logo-icon svg{width:22px;height:22px;fill:var(--mt-red);}
+.logo-text{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;letter-spacing:0.02em;color:#fff;}
+.logo-text-wrap{display:flex;align-items:center;gap:6px;cursor:pointer;}
+.logo-text-wrap:hover .logo-edit-icon{opacity:1;}
+.logo-edit-icon{opacity:0;transition:opacity 0.2s;color:rgba(255,255,255,0.6);}
+.logo-sub{font-size:0.68rem;color:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;}
+/* ACTION BUTTONS ROW — now below logo */
+.header-actions{display:flex;gap:10px;align-items:center;padding:12px 0;}
+.btn-add{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.95);color:var(--mt-red);border:none;border-radius:8px;padding:9px 18px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;transition:all 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.15);}
+.btn-add:hover{background:#fff;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,0.25);}
+.hero{padding:10px 0 14px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;}
+.stats-row{display:flex;gap:24px;text-align:right;}
+.stat{display:flex;flex-direction:column;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#fff;line-height:1;text-shadow:0 2px 8px rgba(0,0,0,0.2);}
+.stat-num.warn{color:var(--orange);}
+.stat-label{font-size:0.67rem;color:rgba(255,255,255,0.65);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;}
+
+/* ── RENAME MODALS ── */
+.rename-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.70);backdrop-filter:blur(7px);z-index:4000;align-items:center;justify-content:center;padding:20px;}
+.rename-modal-overlay.open{display:flex;}
+.rename-modal{background:linear-gradient(160deg,#8A0015,#C0001A);border:1px solid rgba(255,255,255,0.2);border-radius:18px;width:100%;max-width:520px;animation:scaleIn 0.22s ease;overflow:hidden;}
+.rename-modal-header{display:flex;align-items:center;gap:14px;padding:18px 22px;background:rgba(0,0,0,0.15);border-bottom:1px solid rgba(255,255,255,0.15);}
+.rename-modal-icon{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.rename-modal-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;}
+.rename-modal-sub{font-size:0.75rem;color:rgba(255,255,255,0.65);margin-top:2px;}
+.rename-input{width:100%;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3);border-radius:10px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;transition:border-color 0.2s;}
+.rename-input::placeholder{color:rgba(255,255,255,0.45);}
+.rename-input:focus{border-color:rgba(255,255,255,0.7);box-shadow:0 0 0 3px rgba(255,255,255,0.1);}
+.rename-preview{background:rgba(0,0,0,0.15);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:12px 16px;margin-top:2px;}
+.rename-preview-label{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:5px;}
+.rename-preview-value{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;}
+
+/* ── CONTROLS ── */
+.controls-bar{position:relative;display:flex;gap:10px;align-items:center;padding:16px 5vw;border-bottom:1px solid var(--border);z-index:10;background:rgba(0,0,0,0.1);flex-wrap:wrap;}
+.search-wrap{position:relative;flex:1;min-width:200px;}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.5);}
+.search-input{width:100%;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:11px 14px 11px 42px;color:#fff;font-family:'DM Sans',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;}
+.search-input::placeholder{color:rgba(255,255,255,0.45);}
+.search-input:focus{border-color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.16);}
+.filter-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:9px 14px;color:rgba(255,255,255,0.75);font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.filter-btn:hover,.filter-btn.active{border-color:rgba(255,255,255,0.7);color:#fff;background:rgba(255,255,255,0.2);}
+.filter-btn.warn-filter.active{border-color:var(--orange);color:var(--orange);background:rgba(255,180,0,0.12);}
+
+/* ── MAIN ── */
+main{position:relative;padding:30px 5vw 80px;z-index:1;}
+.section-label{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.section-label h2{font-family:'Playfair Display',serif;font-size:1.15rem;color:#fff;}
+.count{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:2px 10px;font-size:0.78rem;color:#fff;font-weight:600;}
+.line{flex:1;height:1px;background:rgba(255,255,255,0.2);}
+
+/* ── CARDS ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(460px,1fr));gap:18px;}
+.card{background:rgba(255,255,255,0.10);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.18);border-radius:16px;overflow:hidden;transition:all 0.3s;animation:fadeUp 0.5s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{border-color:rgba(255,255,255,0.45);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.3);}
+.card.card-expiring{border-color:rgba(255,180,0,0.5);}
+.card.card-expiring:hover{border-color:rgba(255,180,0,0.8);box-shadow:0 12px 40px rgba(255,180,0,0.15);}
+.card.card-expired{border-color:rgba(255,100,100,0.5);}
+.card.card-expired:hover{border-color:rgba(255,100,100,0.8);box-shadow:0 12px 40px rgba(255,100,100,0.15);}
+.card-header{display:flex;align-items:center;gap:14px;padding:16px 18px 0;}
+.company-avatar{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;flex-shrink:0;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.15);}
+.company-meta{flex:1;min-width:0;}
+.company-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px;}
+.company-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:20px;padding:2px 9px;font-size:0.67rem;color:rgba(255,255,255,0.9);font-weight:500;}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.card-actions{display:flex;gap:6px;flex-shrink:0;}
+.act-btn{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid;transition:all 0.2s;}
+.act-btn:hover{transform:scale(1.1);}
+
+/* CARD BODY */
+.card-body{padding:12px 18px;display:grid;gap:7px;}
+.info-row{display:flex;align-items:flex-start;gap:9px;}
+.info-icon{width:25px;height:25px;border-radius:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.info-icon svg{width:11px;height:11px;}
+.info-content{flex:1;min-width:0;}
+.info-label{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:2px;}
+.info-value{font-size:0.86rem;color:rgba(255,255,255,0.92);line-height:1.4;word-break:break-word;}
+.info-value a{color:#FFD700;text-decoration:none;}
+.info-value a:hover{color:#FFE566;text-decoration:underline;}
+
+/* LIEU TAG */
+.lieu-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px;}
+.lieu-tag{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:3px 10px;font-size:0.72rem;font-weight:600;color:#fff;}
+.lieu-tag-dc{background:rgba(255,215,0,0.15);border-color:rgba(255,215,0,0.35);color:#FFD700;}
+
+/* CONTRACT BLOCK */
+.contract-block{margin:0 18px 12px;background:rgba(0,0,0,0.15);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:12px 14px;}
+.contract-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;}
+.contract-tag{display:flex;align-items:center;gap:7px;}
+.contract-tag span{font-size:0.63rem;letter-spacing:0.15em;text-transform:uppercase;color:#FFD700;font-weight:700;}
+.contract-num-badge{font-family:'Playfair Display',serif;font-size:0.8rem;font-weight:700;color:#FFD700;background:rgba(255,215,0,0.12);border:1px solid rgba(255,215,0,0.3);border-radius:6px;padding:2px 9px;}
+.contract-objet{font-size:0.85rem;color:rgba(255,255,255,0.9);font-style:italic;line-height:1.45;margin-bottom:11px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.15);}
+.contract-dates-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.date-cell{background:rgba(0,0,0,0.15);border:1px solid rgba(255,255,255,0.15);border-radius:9px;padding:8px 10px;}
+.date-cell-label{font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:4px;}
+.date-cell-value{font-size:0.8rem;font-weight:600;color:#fff;}
+.duree-val{font-size:0.8rem;font-weight:700;color:#FFD700;}
+.expiry-badge{display:inline-flex;align-items:center;gap:4px;border-radius:20px;padding:3px 8px;font-size:0.66rem;font-weight:700;margin-top:5px;}
+.badge-ok{background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ADE80;}
+.badge-warn{background:rgba(255,180,0,0.15);border:1px solid rgba(255,180,0,0.4);color:#FFB347;animation:badge-pulse 2s ease-in-out infinite;}
+.badge-exp{background:rgba(255,100,100,0.15);border:1px solid rgba(255,100,100,0.4);color:#FF6B6B;}
+@keyframes badge-pulse{0%,100%{opacity:1}50%{opacity:0.55}}
+
+/* CONDUCTEURS */
+.conducteurs-section{padding:12px 18px 16px;background:rgba(0,0,0,0.12);border-top:1px solid rgba(255,255,255,0.12);}
+.conducteurs-title{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.conducteurs-title span{font-size:0.64rem;letter-spacing:0.14em;text-transform:uppercase;color:#FFD700;font-weight:700;}
+.conducteurs-title::before,.conducteurs-title::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.15);}
+.conducteurs-list{display:grid;gap:7px;}
+.conducteur-item{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:10px;padding:8px 12px;transition:all 0.2s;}
+.conducteur-item:hover{border-color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.12);}
+.cond-avatar{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;color:#fff;flex-shrink:0;border:1px solid rgba(255,255,255,0.3);}
+.cond-info{flex:1;min-width:0;}
+.cond-name{font-size:0.84rem;font-weight:600;color:#fff;margin-bottom:2px;}
+.cond-tel{font-size:0.76rem;color:rgba(255,255,255,0.65);}
+.cond-tel a{color:#FFD700;text-decoration:none;}
+.cond-tel a:hover{text-decoration:underline;}
+.cond-role{font-size:0.67rem;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);border-radius:20px;padding:2px 8px;color:rgba(255,255,255,0.85);white-space:nowrap;}
+.btn-detail{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:7px;padding:4px 10px;color:#fff;font-size:0.72rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.2s;flex-shrink:0;}
+.btn-detail:hover{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.5);}
+.btn-rename-cond{width:26px;height:26px;border-radius:6px;background:rgba(255,215,0,0.12);border:1px solid rgba(255,215,0,0.3);color:#FFD700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;}
+.btn-rename-cond:hover{background:rgba(255,215,0,0.25);border-color:#FFD700;}
+
+/* ── CONDUCTEUR DETAIL PAGE ── */
+.detail-page{min-height:100vh;}
+.detail-header{background:rgba(0,0,0,0.2);border-bottom:1px solid rgba(255,255,255,0.15);padding:20px 5vw;}
+.detail-breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.78rem;color:rgba(255,255,255,0.6);margin-bottom:14px;flex-wrap:wrap;}
+.breadcrumb-link{color:#FFD700;cursor:pointer;text-decoration:none;}
+.breadcrumb-link:hover{text-decoration:underline;}
+.detail-hero{display:flex;align-items:center;gap:20px;}
+.detail-avatar{width:64px;height:64px;border-radius:16px;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.35);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:#fff;flex-shrink:0;}
+.detail-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:#fff;margin-bottom:4px;}
+.detail-sub{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.detail-company{font-size:0.85rem;color:rgba(255,255,255,0.65);}
+.detail-role-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:3px 11px;font-size:0.75rem;color:#fff;font-weight:600;}
+.detail-tel-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,215,0,0.12);border:1px solid rgba(255,215,0,0.3);border-radius:20px;padding:3px 11px;font-size:0.75rem;color:#FFD700;}
+.detail-body{padding:30px 5vw 80px;}
+.detail-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;}
+.d-stat{background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:16px 18px;text-align:center;}
+.d-stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#fff;}
+.d-stat-label{font-size:0.7rem;color:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px;}
+
+/* TEAMS */
+.teams-section-label{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.teams-section-label h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;}
+.btn-add-team{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.95);color:var(--mt-red);border:none;border-radius:8px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;transition:all 0.2s;}
+.btn-add-team:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,0.2);}
+.teams-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:16px;}
+.team-card{background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.18);border-radius:14px;overflow:hidden;animation:fadeUp 0.4s ease both;}
+.team-card-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:rgba(0,0,0,0.12);border-bottom:1px solid rgba(255,255,255,0.12);}
+.team-name{display:flex;align-items:center;gap:10px;}
+.team-icon{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;font-size:0.9rem;}
+.team-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;}
+.team-subtitle{font-size:0.72rem;color:rgba(255,255,255,0.6);}
+.team-actions{display:flex;gap:6px;}
+.team-act{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid;transition:all 0.2s;}
+
+.team-members{padding:12px 18px 16px;overflow-x:auto;}
+.members-table{width:100%;border-collapse:collapse;}
+.members-table th{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);font-weight:600;padding:0 8px 8px 0;text-align:left;border-bottom:1px solid rgba(255,255,255,0.15);}
+.members-table td{padding:9px 8px 9px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:0.84rem;vertical-align:middle;color:rgba(255,255,255,0.9);}
+.members-table tr:last-child td{border-bottom:none;}
+.member-name-cell{display:flex;align-items:center;gap:8px;}
+.member-mini-avatar{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.62rem;font-weight:700;color:#fff;flex-shrink:0;}
+.qualite-badge{display:inline-flex;align-items:center;gap:4px;border-radius:20px;padding:3px 9px;font-size:0.7rem;font-weight:700;}
+.q-raccordeur{background:rgba(255,180,0,0.15);border:1px solid rgba(255,180,0,0.35);color:#FFB347;}
+.q-cableur{background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.3);color:#4ADE80;}
+.q-autre{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;}
+.btn-del-member{width:22px;height:22px;border-radius:5px;background:rgba(255,100,100,0.1);border:1px solid rgba(255,100,100,0.25);color:#FF6B6B;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.btn-del-member:hover{background:#FF6B6B;color:#fff;}
+.btn-add-member{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px dashed rgba(255,255,255,0.25);border-radius:8px;padding:8px 14px;color:rgba(255,255,255,0.8);font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;transition:all 0.2s;width:100%;justify-content:center;margin-top:10px;}
+.btn-add-member:hover{background:rgba(255,255,255,0.14);border-style:solid;}
+
+.empty-team{text-align:center;padding:20px;color:rgba(255,255,255,0.5);font-size:0.85rem;}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);z-index:2000;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.open{display:flex;}
+.modal{background:linear-gradient(160deg,#7A0012,#B0001A);border:1px solid rgba(255,255,255,0.2);border-radius:20px;width:100%;max-width:630px;max-height:92vh;overflow-y:auto;animation:scaleIn 0.25s ease;}
+.modal.modal-sm{max-width:480px;}
+.modal.modal-lg{max-width:900px;}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(255,255,255,0.15);position:sticky;top:0;background:rgba(100,0,18,0.95);backdrop-filter:blur(10px);z-index:2;}
+.modal-header h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:#fff;}
+.modal-close{width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-size:1rem;}
+.modal-close:hover{background:rgba(255,80,80,0.3);border-color:rgba(255,80,80,0.5);color:#fff;}
+.modal-body{padding:20px 24px;display:grid;gap:13px;}
+.sep{display:flex;align-items:center;gap:10px;margin:3px 0;}
+.sep span{font-size:0.64rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:700;white-space:nowrap;}
+.sep .sl{flex:1;height:1px;background:rgba(255,255,255,0.2);}
+.sep-g span{color:#FFD700;}
+.sep-b span{color:rgba(255,255,255,0.9);}
+.sep-p span{color:#FFD0D0;}
+.form-group{display:grid;gap:5px;}
+.form-group label{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.65);font-weight:600;}
+.form-group input,.form-group textarea,.form-group select{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-radius:9px;padding:10px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;-webkit-appearance:none;resize:vertical;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.15);}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.4);}
+.form-group select option{background:#8A0012;color:#fff;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.cond-fields-row{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;align-items:end;}
+.cond-fields-row input{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:9px;padding:10px 12px;color:#fff;font-family:'DM Sans',sans-serif;font-size:0.84rem;outline:none;transition:border-color 0.2s;}
+.cond-fields-row input:focus{border-color:rgba(255,255,255,0.55);}
+.cond-fields-row input::placeholder{color:rgba(255,255,255,0.4);}
+.btn-remove-cond,.btn-remove-row{width:32px;height:38px;border-radius:8px;background:rgba(255,80,80,0.15);border:1px solid rgba(255,80,80,0.3);color:#FF8080;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;}
+.btn-remove-cond:hover,.btn-remove-row:hover{background:rgba(255,80,80,0.4);border-color:#FF8080;color:#fff;}
+.btn-add-cond{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px dashed rgba(255,255,255,0.3);border-radius:9px;padding:10px 16px;color:rgba(255,255,255,0.8);font-family:'DM Sans',sans-serif;font-size:0.84rem;cursor:pointer;transition:all 0.2s;width:100%;justify-content:center;}
+.btn-add-cond:hover{background:rgba(255,255,255,0.14);border-style:solid;}
+.conducteurs-fields{display:grid;gap:9px;}
+.modal-footer{display:flex;gap:10px;justify-content:flex-end;padding:14px 24px;border-top:1px solid rgba(255,255,255,0.15);position:sticky;bottom:0;background:rgba(100,0,18,0.95);backdrop-filter:blur(10px);}
+.btn-cancel{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:9px;padding:9px 18px;color:rgba(255,255,255,0.8);font-family:'DM Sans',sans-serif;font-size:0.88rem;cursor:pointer;transition:all 0.2s;}
+.btn-cancel:hover{background:rgba(255,255,255,0.18);color:#fff;}
+.btn-save{background:rgba(255,255,255,0.95);border:none;border-radius:9px;padding:9px 22px;color:var(--mt-red);font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;transition:all 0.2s;}
+.btn-save:hover{background:#fff;transform:translateY(-1px);box-shadow:0 5px 16px rgba(0,0,0,0.2);}
+.btn-export{display:flex;align-items:center;gap:7px;background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.3);border-radius:8px;padding:9px 16px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.85rem;cursor:pointer;transition:all 0.2s;color:#4ADE80;}
+.btn-export:hover{background:rgba(74,222,128,0.2);border-color:rgba(74,222,128,0.55);transform:translateY(-1px);}
+.btn-export-cond{display:flex;align-items:center;gap:7px;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);border-radius:8px;padding:7px 14px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;color:#4ADE80;}
+.btn-export-cond:hover{background:rgba(74,222,128,0.18);border-color:rgba(74,222,128,0.5);}
+.btn-home{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.95);color:var(--mt-red);border:none;border-radius:8px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;transition:all 0.2s;margin-left:auto;flex-shrink:0;}
+.btn-home:hover{background:#fff;transform:translateY(-1px);box-shadow:0 5px 16px rgba(0,0,0,0.2);}
+.btn-home:active{transform:scale(0.97);}
+
+/* Member modal */
+.member-form-row{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr 1.2fr 1fr 1.8fr auto;gap:7px;align-items:end;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 12px;}
+.member-form-row input,.member-form-row select{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:7px;padding:8px 10px;color:#fff;font-family:'DM Sans',sans-serif;font-size:0.82rem;outline:none;-webkit-appearance:none;}
+.member-form-row input:focus,.member-form-row select:focus{border-color:rgba(255,255,255,0.55);}
+.member-form-row input::placeholder{color:rgba(255,255,255,0.4);}
+.member-form-row select option{background:#8A0012;}
+.member-fields-container{display:grid;gap:8px;}
+
+.empty-state{display:none;text-align:center;padding:70px 20px;color:rgba(255,255,255,0.55);}
+.empty-state.show{display:block;}
+.empty-icon{width:60px;height:60px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+.empty-state h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;margin-bottom:6px;}
+
+/* VEHICLE */
+.vehicle-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(255,215,0,0.12);border:1px solid rgba(255,215,0,0.3);border-radius:6px;padding:2px 8px;font-size:0.72rem;font-weight:600;color:#FFD700;font-family:monospace;letter-spacing:0.05em;}
+.vehicle-type{font-size:0.72rem;color:rgba(255,255,255,0.6);}
+.gps-btn{display:inline-flex;align-items:center;gap:4px;background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.3);border-radius:6px;padding:3px 9px;font-size:0.72rem;font-weight:600;color:#4ADE80;text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+.gps-btn:hover{background:rgba(74,222,128,0.22);}
+.gps-btn svg{animation:gps-pulse 2s ease-in-out infinite;}
+@keyframes gps-pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+
+/* SAVE DIALOG */
+.save-dialog-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);z-index:3000;align-items:center;justify-content:center;padding:20px;}
+.save-dialog-overlay.open{display:flex;}
+.save-dialog{background:linear-gradient(160deg,#7A0012,#B0001A);border:1px solid rgba(255,255,255,0.2);border-radius:18px;width:100%;max-width:480px;animation:scaleIn 0.22s ease;overflow:hidden;}
+.save-dialog-header{display:flex;align-items:center;gap:14px;padding:20px 24px;background:rgba(0,0,0,0.15);border-bottom:1px solid rgba(255,255,255,0.15);}
+.save-dialog-icon{width:42px;height:42px;border-radius:12px;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.save-dialog-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:2px;}
+.save-dialog-sub{font-size:0.75rem;color:rgba(255,255,255,0.6);}
+.save-dialog-body{padding:22px 24px;display:grid;gap:16px;}
+.save-filename-wrap{position:relative;}
+.save-filename-input{width:100%;background:rgba(255,255,255,0.1);border:1px solid rgba(74,222,128,0.35);border-radius:10px;padding:13px 70px 13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;transition:border-color 0.2s;letter-spacing:0.01em;}
+.save-filename-input::placeholder{color:rgba(255,255,255,0.4);}
+.save-filename-input:focus{border-color:rgba(74,222,128,0.7);box-shadow:0 0 0 3px rgba(74,222,128,0.1);}
+.save-ext-badge{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.3);border-radius:6px;padding:3px 9px;font-size:0.75rem;font-weight:700;color:#4ADE80;pointer-events:none;}
+.save-path-info{display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:12px 14px;}
+.save-path-icon{width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.save-path-text{flex:1;}
+.save-path-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:3px;}
+.save-path-value{font-size:0.82rem;color:#fff;line-height:1.4;}
+.save-path-tip{font-size:0.75rem;color:rgba(255,255,255,0.55);margin-top:4px;line-height:1.4;}
+.save-sheets-preview{display:grid;gap:6px;}
+.save-sheets-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:2px;}
+.save-sheet-item{display:flex;align-items:center;gap:8px;padding:7px 10px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;}
+.save-sheet-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;flex-shrink:0;}
+.save-sheet-name{font-size:0.8rem;color:#fff;}
+.save-sheet-count{margin-left:auto;font-size:0.72rem;color:rgba(255,255,255,0.55);}
+.save-dialog-footer{display:flex;gap:10px;justify-content:flex-end;padding:16px 24px;border-top:1px solid rgba(255,255,255,0.15);}
+.btn-save-confirm{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.95);border:none;border-radius:9px;padding:10px 22px;color:var(--mt-red);font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;transition:all 0.2s;}
+.btn-save-confirm:hover{background:#fff;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,0.2);}
+.dl-spinner{display:none;width:14px;height:14px;border:2px solid rgba(200,0,0,0.3);border-top-color:var(--mt-red);border-radius:50%;animation:spin 0.7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+footer{position:relative;border-top:1px solid rgba(255,255,255,0.15);padding:18px 5vw;display:flex;align-items:center;justify-content:space-between;z-index:1;background:rgba(0,0,0,0.12);}
+footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
+
+@media(max-width:720px){
+  .cards-grid,.teams-grid{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr}
+  .stats-row{display:none}
+  .form-row{grid-template-columns:1fr}
+  .contract-dates-grid{grid-template-columns:1fr 1fr}
+  .cond-fields-row{grid-template-columns:1fr 1fr}
+  header,main,.controls-bar,footer,.detail-header,.detail-body{padding-left:16px;padding-right:16px}
+  footer{flex-direction:column;gap:8px;text-align:center}
+}/* MULTI-SELECT VILLE */
+.multi-select-wrap{position:relative;}
+.multi-select-display{display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-radius:9px;padding:10px 14px;cursor:pointer;transition:border-color 0.2s;min-height:40px;}
+.multi-select-display:hover,.multi-select-display.open{border-color:rgba(255,255,255,0.6);}
+.multi-select-display.open{border-radius:9px 9px 0 0;}
+.multi-select-tags{display:flex;gap:5px;flex-wrap:wrap;flex:1;}
+.ms-tag{display:inline-flex;align-items:center;gap:4px;background:rgba(255,215,0,0.18);border:1px solid rgba(255,215,0,0.35);border-radius:20px;padding:2px 8px;font-size:0.72rem;font-weight:600;color:#FFD700;}
+.ms-tag-remove{cursor:pointer;opacity:0.7;font-size:0.85rem;line-height:1;margin-left:2px;}
+.ms-tag-remove:hover{opacity:1;}
+.multi-select-dropdown{display:none;position:absolute;left:0;right:0;top:100%;background:linear-gradient(160deg,#7A0012,#A0001A);border:1px solid rgba(255,255,255,0.3);border-top:none;border-radius:0 0 10px 10px;z-index:500;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.4);}
+.multi-select-dropdown.open{display:block;}
+.ms-option{display:flex;align-items:center;gap:10px;padding:9px 14px;cursor:pointer;transition:background 0.15s;font-size:0.87rem;color:rgba(255,255,255,0.9);}
+.ms-option:hover{background:rgba(255,255,255,0.12);}
+.ms-option.selected{color:#FFD700;}
+.ms-checkbox{width:16px;height:16px;border-radius:4px;border:1.5px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s;font-size:0.7rem;color:transparent;}
+.ms-option.selected .ms-checkbox{background:#FFD700;border-color:#FFD700;color:#7A0012;font-weight:900;}
+/* ── CONFIRMATION FIREBASE ── */
+.fb-confirm{
+  position:fixed;top:0;left:0;right:0;z-index:9999;
+  padding:0;margin:0;
+  transform:translateY(-100%);
+  transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  pointer-events:none;
+}
+.fb-confirm.show{transform:translateY(0);pointer-events:auto;}
+
+.fb-confirm-inner{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 24px;
+  font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:600;
+  color:#fff;
+}
+.fb-confirm.ok   .fb-confirm-inner{background:linear-gradient(90deg,#064e1a,#0a6624,#064e1a);border-bottom:2px solid #4ADE80;}
+.fb-confirm.fail .fb-confirm-inner{background:linear-gradient(90deg,#6b0000,#9a0000,#6b0000);border-bottom:2px solid #FF6B6B;animation:shake 0.4s ease;}
+.fb-confirm.warn .fb-confirm-inner{background:linear-gradient(90deg,#4a2e00,#7a4a00,#4a2e00);border-bottom:2px solid #FFB347;}
+
+.fb-confirm-icon{
+  width:34px;height:34px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:1.1rem;
+}
+.fb-confirm.ok   .fb-confirm-icon{background:rgba(74,222,128,0.2);border:1.5px solid #4ADE80;}
+.fb-confirm.fail .fb-confirm-icon{background:rgba(255,107,107,0.2);border:1.5px solid #FF6B6B;}
+.fb-confirm.warn .fb-confirm-icon{background:rgba(255,180,0,0.2);border:1.5px solid #FFB347;}
+
+.fb-confirm-text{flex:1;}
+.fb-confirm-title{font-size:0.9rem;font-weight:700;margin-bottom:2px;}
+.fb-confirm-sub{font-size:0.78rem;opacity:0.8;font-weight:400;}
+.fb-confirm-close{
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);
+  border-radius:6px;color:#fff;cursor:pointer;
+  padding:4px 12px;font-size:0.8rem;font-family:'DM Sans',sans-serif;
+  transition:background 0.2s;
+}
+.fb-confirm-close:hover{background:rgba(255,255,255,0.22);}
+.fb-confirm-progress{
+  height:3px;background:rgba(255,255,255,0.15);
+}
+.fb-confirm-progress-bar{
+  height:100%;width:100%;
+  transition:width linear;
+}
+.fb-confirm.ok   .fb-confirm-progress-bar{background:#4ADE80;}
+.fb-confirm.fail .fb-confirm-progress-bar{background:#FF6B6B;}
+.fb-confirm.warn .fb-confirm-progress-bar{background:#FFB347;}
+
+/* Petit toast discret en bas pour les messages moins importants */
+.save-toast{
+  position:fixed;bottom:24px;right:24px;z-index:9998;
+  border-radius:10px;padding:10px 16px;
+  font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:600;
+  box-shadow:0 6px 24px rgba(0,0,0,0.4);
+  opacity:0;transform:translateY(10px);
+  transition:opacity 0.25s,transform 0.25s;pointer-events:none;
+  color:#fff;max-width:280px;
+}
+.save-toast.show{opacity:1;transform:translateY(0);}
+.save-toast.success{background:rgba(6,78,26,0.95);border:1px solid #4ADE80;}
+.save-toast.warn{background:rgba(74,46,0,0.95);border:1px solid #FFB347;}
+.save-toast.error{background:rgba(90,0,0,0.95);border:1px solid #FF6B6B;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* STATUS BAR — barre de statut Firebase en bas à gauche */
+.fb-status-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:8000;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:7px 20px;
+  font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;
+  background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);
+  border-top:1px solid rgba(255,255,255,0.1);
+  transition:all 0.4s;
+  transform:translateY(100%);
+}
+.fb-status-bar.show{transform:translateY(0);}
+.fb-status-bar.ok{border-top-color:rgba(74,222,128,0.4);}
+.fb-status-bar.fail{border-top-color:rgba(255,107,107,0.4);}
+.fb-status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.fb-status-bar.ok .fb-status-dot{background:#4ADE80;animation:blink 2s ease-in-out infinite;}
+.fb-status-bar.fail .fb-status-dot{background:#FF6B6B;}
+.fb-status-text{color:#fff;}
+.fb-status-time{color:rgba(255,255,255,0.5);font-size:0.72rem;}
+.fb-status-close{background:none;border:none;color:rgba(255,255,255,0.5);cursor:pointer;font-size:0.9rem;margin-left:8px;padding:0 4px;}
+.fb-status-close:hover{color:#fff;}
+/* ── STARTUP MODAL — connexion Firebase ── */
+#startupModalOverlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,0.72);backdrop-filter:blur(8px);
+  z-index:99999;align-items:center;justify-content:center;padding:20px;
+}
+#startupModalOverlay.show{display:flex;animation:fadeIn 0.3s ease;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+#startupModal{
+  background:linear-gradient(160deg,#7A0012,#B0001A);
+  border:2px solid rgba(255,255,255,0.2);
+  border-radius:20px;width:100%;max-width:420px;
+  overflow:hidden;animation:scaleIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+.sm-header{
+  display:flex;align-items:center;gap:16px;
+  padding:22px 24px 16px;
+}
+#smIcon{
+  width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;flex-shrink:0;
+}
+.sm-title-wrap{}
+.sm-app-name{
+  font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(255,255,255,0.55);margin-bottom:4px;
+}
+#smTitle{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:700;color:#fff;
+}
+.sm-body{padding:0 24px 20px;}
+#smDetail{
+  font-size:0.88rem;color:rgba(255,255,255,0.82);
+  line-height:1.5;margin-bottom:12px;
+}
+#smTime{
+  font-size:0.72rem;color:rgba(255,255,255,0.45);
+}
+.sm-footer{
+  padding:16px 24px;
+  border-top:1px solid rgba(255,255,255,0.12);
+  display:flex;justify-content:center;
+}
+#smBtn{
+  width:100%;border:none;border-radius:10px;
+  padding:12px;font-family:'DM Sans',sans-serif;
+  font-weight:700;font-size:0.95rem;
+  cursor:pointer;transition:all 0.2s;
+}
+#smBtn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,0.25);}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     PAGE 1 — ANNUAIRE PRINCIPAL
+══════════════════════════════════════════════ -->
+<div id="page-main" class="page active">
+
+  <div id="alertBanner">
+    <div class="alert-inner">
+      <div class="alert-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="alert-content">
+        <div class="alert-title">⚠️ Contrats nécessitant une attention immédiate</div>
+        <div class="alert-items" id="alertItems"></div>
+      </div>
+      <button class="alert-dismiss" onclick="document.getElementById('alertBanner').classList.remove('show')">✕</button>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-bg"></div>
+    <div class="top-bar">
+      <div class="logo-badge">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="logo-text-wrap" onclick="openRenameModal()" title="Cliquez pour renommer">
+            <div class="logo-text" id="appTitle">Annuaire des prestataires travaillant pour le compte du CMO Settat</div>
+            <svg class="logo-edit-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+          <div class="logo-sub" style="display:flex;align-items:center;gap:6px;">
+            <span id="connDot" style="width:7px;height:7px;border-radius:50%;background:#FFB347;display:inline-block;flex-shrink:0;" title="Connexion en cours…"></span>
+            Répertoire Professionnel
+          </div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat"><span class="stat-num" id="stat-societes">0</span><span class="stat-label">Sociétés</span></div>
+        <div class="stat"><span class="stat-num" id="stat-conducteurs">0</span><span class="stat-label">Conducteurs</span></div>
+        <div class="stat"><span class="stat-num warn" id="stat-alerts">0</span><span class="stat-label">⚠ Alertes</span></div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-export" onclick="exportAllExcel()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        Exporter Excel
+      </button>
+      <button class="btn-add" onclick="openModal()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Ajouter une société
+      </button>
+    </div>
+  </header>
+
+  <div class="controls-bar">
+    <div class="search-wrap">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input" id="searchInput" type="text" placeholder="Société, contrat, lieu, conducteur…" oninput="filterCards()">
+    </div>
+    <button class="filter-btn active" onclick="setFilter('all',this)">Tous</button>
+    <button class="filter-btn warn-filter" onclick="setFilter('expiring',this)">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Alertes
+    </button>
+    <button class="filter-btn" onclick="setFilter('valid',this)">Valides</button>
+  </div>
+
+  <main>
+    <div class="section-label">
+      <h2>Répertoire</h2>
+      <div class="count" id="visibleCount">0 résultat</div>
+      <div class="line"></div>
+    </div>
+    <div class="cards-grid" id="cardsGrid"></div>
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8A9BB0" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <h3>Aucun résultat</h3><p>Aucune société ne correspond à votre recherche.</p>
+    </div>
+  </main>
+
+  <footer>
+    <span>© 2025 <span id="footerTitle">Annuaire des prestataires travaillant pour le compte du CMO Settat</span></span>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <span id="footer-date"></span>
+      <button onclick="clearData()" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:7px;padding:5px 12px;color:rgba(255,255,255,0.55);font-family:'DM Sans',sans-serif;font-size:0.72rem;cursor:pointer;transition:all 0.2s;" title="Réinitialiser toutes les données">🗑 Réinitialiser</button>
+    </div>
+  </footer>
+</div><!-- /page-main -->
+
+<!-- ═══════════════════════════════════════════
+     PAGE 2 — FICHE CONDUCTEUR
+══════════════════════════════════════════════ -->
+<div id="page-conducteur" class="page detail-page">
+  <div class="detail-header">
+    <div class="detail-breadcrumb">
+      <span class="breadcrumb-link" onclick="showPage('main')">🏠 Annuaire</span>
+      <span>›</span>
+      <span id="bc-company">Société</span>
+      <span>›</span>
+      <span id="bc-cond" style="color:var(--text)">Conducteur</span>
+      <button class="btn-home" onclick="showPage('main')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Accueil
+      </button>
+    </div>
+    <div class="detail-hero">
+      <div class="detail-avatar" id="detail-avatar">KJ</div>
+      <div class="detail-meta">
+        <div class="detail-name" id="detail-name">Nom du Conducteur</div>
+        <div class="detail-sub">
+          <span class="detail-company" id="detail-company-name">Société</span>
+          <span class="detail-role-badge" id="detail-role">Conducteur</span>
+          <span class="detail-tel-badge" id="detail-tel">📞 Tél</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-body">
+    <div class="detail-stats">
+      <div class="d-stat"><div class="d-stat-num" id="ds-teams">0</div><div class="d-stat-label">Équipes</div></div>
+      <div class="d-stat"><div class="d-stat-num" id="ds-members">0</div><div class="d-stat-label">Membres</div></div>
+      <div class="d-stat"><div class="d-stat-num" id="ds-raccordeurs">0</div><div class="d-stat-label">Raccordeurs</div></div>
+    </div>
+
+    <div class="teams-section-label">
+      <h3>Équipes de Travail</h3>
+      <div class="line"></div>
+      <button class="btn-export-cond" onclick="exportConducteurExcel()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        Exporter Excel
+      </button>
+      <button class="btn-add-team" onclick="openTeamModal()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Nouvelle équipe
+      </button>
+    </div>
+    <div class="teams-grid" id="teamsGrid"></div>
+    <div class="empty-state" id="teamsEmptyState">
+      <div class="empty-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8A9BB0" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Aucune équipe</h3><p>Cliquez sur "Nouvelle équipe" pour commencer.</p>
+    </div>
+  </div>
+</div><!-- /page-conducteur -->
+
+<!-- ═══════════════════════════════════════════
+     MODAL SOCIÉTÉ
+══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOutside(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">Nouvelle société</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="sep sep-g"><div class="sl"></div><span>Informations Société</span><div class="sl"></div></div>
+      <div class="form-row">
+        <div class="form-group"><label>Nom de la société *</label><input type="text" id="f-nom" placeholder="Ex: BTP Construction SARL"></div>
+        <div class="form-group"><label>Secteur d'activité</label><input type="text" id="f-secteur" placeholder="Gros œuvre, VRD…"></div>
+      </div>
+      <div class="form-group"><label>Adresse complète *</label><input type="text" id="f-adresse" placeholder="Rue, quartier, commune…"></div>
+      <div class="form-row">
+        <div class="form-group"><label>Ville / Localisation</label><input type="text" id="f-ville" placeholder="Ville…"></div>
+        <div class="form-group"><label>N° Téléphone</label><input type="tel" id="f-tel" placeholder="+212 6XX XXX XXX"></div>
+      </div>
+      <div class="form-group"><label>Adresse e-mail</label><input type="email" id="f-email" placeholder="contact@societe.com"></div>
+
+      <div class="sep sep-p"><div class="sl"></div><span>Lieu des Travaux</span><div class="sl"></div></div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Délégation Commerciale (DC)</label>
+          <select id="f-dc" onchange="updateVilleSelect()">
+            <option value="">— Choisir une DC —</option>
+            <option value="DC Beni Mellal">DC Beni Mellal</option>
+            <option value="DC El Jadida">DC El Jadida</option>
+            <option value="DC Settat">DC Settat</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Ville(s) des travaux <span style="color:rgba(255,255,255,0.5);font-size:0.65rem;font-weight:400">(sélection multiple)</span></label>
+          <div class="multi-select-wrap" id="villeMultiWrap">
+            <div class="multi-select-display" id="villeMultiDisplay" onclick="toggleVilleDropdown(event)">
+              <span id="villeMultiText" style="color:rgba(255,255,255,0.45)">— Choisir d'abord une DC —</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="multi-select-dropdown" id="villeMultiDropdown"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sep sep-g"><div class="sl"></div><span>Contrat</span><div class="sl"></div></div>
+      <div class="form-row">
+        <div class="form-group"><label>N° du Contrat</label><input type="text" id="f-contrat-num" placeholder="CTR-2025-0001"></div>
+        <div class="form-group">
+          <label>Délai du contrat (mois)</label>
+          <input type="number" id="f-duree" placeholder="Ex: 12" min="1" max="120" oninput="autoCalcExpiry()">
+        </div>
+      </div>
+      <div class="form-group"><label>Objet du contrat</label><input type="text" id="f-objet" placeholder="Description des travaux…"></div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date de notification</label>
+          <input type="date" id="f-date-notif" oninput="autoCalcExpiry()">
+        </div>
+        <div class="form-group">
+          <label>Date d'expiration <span style="color:var(--green);font-size:0.68rem;font-weight:600">(calculée automatiquement)</span></label>
+          <div id="f-date-exp-display" style="background:var(--dark-3);border:1px solid rgba(34,197,94,0.3);border-radius:9px;padding:10px 14px;font-size:0.88rem;color:var(--green);font-weight:600;min-height:40px;display:flex;align-items:center;gap:8px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span id="f-date-exp-label" style="color:var(--muted)">Saisir date de notification + délai</span>
+          </div>
+          <input type="hidden" id="f-date-exp">
+        </div>
+      </div>
+
+      <div class="sep sep-b"><div class="sl"></div><span>Conducteurs de Travaux</span><div class="sl"></div></div>
+      <div class="conducteurs-fields" id="condFields"></div>
+      <button class="btn-add-cond" onclick="addCondField()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Ajouter un conducteur
+      </button>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal()">Annuler</button>
+      <button class="btn-save" onclick="saveCompany()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL ÉQUIPE
+══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="teamModalOverlay" onclick="closeTeamModalOnOutside(event)">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h3 id="teamModalTitle">Nouvelle équipe</h3>
+      <button class="modal-close" onclick="closeTeamModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Nom de l'équipe *</label>
+        <input type="text" id="tf-nom" placeholder="Ex: Équipe 1, Équipe Nord…">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeTeamModal()">Annuler</button>
+      <button class="btn-save" onclick="saveTeam()">Créer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL MEMBRE
+══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="memberModalOverlay" onclick="closeMemberModalOnOutside(event)">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3>Ajouter des membres</h3>
+      <button class="modal-close" onclick="closeMemberModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="sep sep-b"><div class="sl"></div><span>Membres de l'équipe</span><div class="sl"></div></div>
+      <div class="member-fields-container" id="memberFields"></div>
+      <button class="btn-add-member" onclick="addMemberField()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Ajouter un membre
+      </button>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeMemberModal()">Annuler</button>
+      <button class="btn-save" onclick="saveMembers()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SAVE DIALOG
+══════════════════════════════════════════════ -->
+<div class="save-dialog-overlay" id="saveDialogOverlay" onclick="closeSaveDialogOnOutside(event)">
+  <div class="save-dialog">
+    <div class="save-dialog-header">
+      <div class="save-dialog-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+      </div>
+      <div>
+        <div class="save-dialog-title" id="sdTitle">Exporter en Excel</div>
+        <div class="save-dialog-sub">Choisissez le nom de votre fichier avant le téléchargement</div>
+      </div>
+    </div>
+    <div class="save-dialog-body">
+      <div>
+        <div class="save-sheets-label">Nom du fichier</div>
+        <div class="save-filename-wrap" style="margin-top:6px">
+          <input class="save-filename-input" id="sdFilename" type="text" placeholder="Nom du fichier…" onkeydown="if(event.key==='Enter')confirmSave()">
+          <span class="save-ext-badge">.xlsx</span>
+        </div>
+      </div>
+      <div class="save-path-info">
+        <div class="save-path-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8A9BB0" stroke-width="2" stroke-linecap="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="save-path-text">
+          <div class="save-path-label">Emplacement d'enregistrement</div>
+          <div class="save-path-value">📂 Une fenêtre <strong>"Enregistrer sous"</strong> s'ouvrira pour choisir le dossier</div>
+          <div class="save-path-tip">💡 Sur Chrome &amp; Edge : vous choisissez librement l'emplacement. Sur Firefox/Safari : le fichier va dans <strong>Téléchargements</strong> par défaut.</div>
+        </div>
+      </div>
+      <div>
+        <div class="save-sheets-label">Contenu du fichier</div>
+        <div class="save-sheets-preview" id="sdSheets" style="margin-top:6px"></div>
+      </div>
+    </div>
+    <div class="save-dialog-footer">
+      <button class="btn-cancel" onclick="closeSaveDialog()">Annuler</button>
+      <button class="btn-save-confirm" id="sdConfirmBtn" onclick="confirmSave()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="sdConfirmText">Télécharger</span>
+        <div class="dl-spinner" id="dlSpinner"></div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL RENOMMER CONDUCTEUR
+══════════════════════════════════════════════ -->
+<div class="rename-modal-overlay" id="renameCondOverlay" onclick="if(event.target===this)closeRenameCond()">
+  <div class="rename-modal">
+    <div class="rename-modal-header">
+      <div class="rename-modal-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A7CFF" stroke-width="2.2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div>
+        <div class="rename-modal-title">Renommer le conducteur</div>
+        <div class="rename-modal-sub" id="renameCondSub">Modifier le nom, téléphone et rôle</div>
+      </div>
+      <button class="modal-close" onclick="closeRenameCond()" style="margin-left:auto">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Nom complet *</label>
+        <input type="text" id="rc-nom" placeholder="Nom et prénom du conducteur"
+               oninput="document.getElementById('rcPreviewVal').textContent=this.value||'…'"
+               onkeydown="if(event.key==='Enter')confirmRenameCond()">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Téléphone</label>
+          <input type="tel" id="rc-tel" placeholder="+212 6XX XXX XXX">
+        </div>
+        <div class="form-group">
+          <label>Rôle / Fonction</label>
+          <input type="text" id="rc-role" placeholder="Ex: Conducteur Principal">
+        </div>
+      </div>
+      <div class="rename-preview">
+        <div class="rename-preview-label">Aperçu du nom</div>
+        <div class="rename-preview-value" id="rcPreviewVal" style="color:var(--accent)">…</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeRenameCond()">Annuler</button>
+      <button class="btn-save" onclick="confirmRenameCond()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="margin-right:4px"><polyline points="20 6 9 17 4 12"/></svg>
+        Appliquer
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL RENOMMER L'ANNUAIRE
+══════════════════════════════════════════════ -->
+<div class="rename-modal-overlay" id="renameModalOverlay" onclick="closeRenameOnOutside(event)">
+  <div class="rename-modal">
+    <div class="rename-modal-header">
+      <div class="rename-modal-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </div>
+      <div>
+        <div class="rename-modal-title">Renommer l'annuaire</div>
+        <div class="rename-modal-sub">Ce nom s'affiche dans l'en-tête, le titre et le pied de page</div>
+      </div>
+      <button class="modal-close" onclick="closeRenameModal()" style="margin-left:auto">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Nom de l'annuaire</label>
+        <input class="rename-input" id="renameInput" type="text"
+               placeholder="Ex: Annuaire CMO Settat…"
+               oninput="document.getElementById('renamePreviewVal').textContent=this.value||'…'"
+               onkeydown="if(event.key==='Enter')confirmRename()">
+      </div>
+      <div class="rename-preview">
+        <div class="rename-preview-label">Aperçu</div>
+        <div class="rename-preview-value" id="renamePreviewVal">…</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeRenameModal()">Annuler</button>
+      <button class="btn-save" onclick="confirmRenameAndSync()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="margin-right:4px"><polyline points="20 6 9 17 4 12"/></svg>
+        Appliquer
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL DÉMARRAGE — Statut connexion Firebase
+══════════════════════════════════════════════ -->
+<div id="startupModalOverlay">
+  <div id="startupModal">
+    <div class="sm-header">
+      <div id="smIcon">🔄</div>
+      <div class="sm-title-wrap">
+        <div class="sm-app-name">Annuaire CMO Settat — Statut Firebase</div>
+        <div id="smTitle">Connexion en cours…</div>
+      </div>
+    </div>
+    <div class="sm-body">
+      <div id="smDetail">Vérification de la connexion à Firebase…</div>
+      <div id="smTime"></div>
+    </div>
+    <div class="sm-footer">
+      <button id="smBtn" onclick="closeStartupModal()">Continuer</button>
+    </div>
+  </div>
+</div>
+
+<div class="save-toast" id="saveToast"></div>
+
+<!-- Bannière de confirmation Firebase -->
+<div class="fb-confirm" id="fbConfirm">
+  <div class="fb-confirm-inner">
+    <div class="fb-confirm-icon" id="fbConfirmIcon">✅</div>
+    <div class="fb-confirm-text">
+      <div class="fb-confirm-title" id="fbConfirmTitle">Modifications enregistrées</div>
+      <div class="fb-confirm-sub"  id="fbConfirmSub">Données synchronisées avec Firebase</div>
+    </div>
+    <button class="fb-confirm-close" onclick="hideFbConfirm()">Fermer</button>
+  </div>
+  <div class="fb-confirm-progress">
+    <div class="fb-confirm-progress-bar" id="fbConfirmBar"></div>
+  </div>
+</div>
+
+<!-- Barre de statut Firebase -->
+<div class="fb-status-bar" id="fbStatusBar">
+  <div class="fb-status-dot"></div>
+  <span class="fb-status-text" id="fbStatusText">Connexion Firebase…</span>
+  <span class="fb-status-time" id="fbStatusTime"></span>
+  <button class="fb-status-close" onclick="document.getElementById('fbStatusBar').classList.remove('show')">✕</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<script>
+// ── Chargement Firebase via import dynamique ──
+// Fonctionne sur GitHub Pages sans restriction CSP
+async function loadFirebaseSDK() {
+  try {
+    const [appModule, dbModule] = await Promise.all([
+      import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js'),
+      import('https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js')
+    ]);
+    window._FB = {
+      initializeApp: appModule.initializeApp,
+      getApps:       appModule.getApps,
+      getDatabase:   dbModule.getDatabase,
+      ref:           dbModule.ref,
+      set:           dbModule.set,
+      onValue:       dbModule.onValue,
+      remove:        dbModule.remove,
+      get:           dbModule.get,
+      loaded: true
+    };
+    console.log('✅ Firebase SDK chargé via import dynamique');
+    return true;
+  } catch(e1) {
+    console.warn('gstatic bloqué, essai jsdelivr...', e1.message);
+    try {
+      const [appModule, dbModule] = await Promise.all([
+        import('https://cdn.jsdelivr.net/npm/firebase@10.12.0/app/+esm'),
+        import('https://cdn.jsdelivr.net/npm/firebase@10.12.0/database/+esm')
+      ]);
+      window._FB = {
+        initializeApp: appModule.initializeApp,
+        getApps:       appModule.getApps,
+        getDatabase:   dbModule.getDatabase,
+        ref:           dbModule.ref,
+        set:           dbModule.set,
+        onValue:       dbModule.onValue,
+        remove:        dbModule.remove,
+        get:           dbModule.get,
+        loaded: true
+      };
+      console.log('✅ Firebase SDK chargé via jsdelivr');
+      return true;
+    } catch(e2) {
+      console.error('❌ Tous les CDN Firebase bloqués', e2.message);
+      window._FB = { loaded: false };
+      return false;
+    }
+  }
+}
+</script>
+
+<script>
+const DC_VILLES = {
+  'DC Beni Mellal': ['Beni Mellal','Fkhih Ben Saleh','Azilal','Kouribga','Oued Zem'],
+  'DC El Jadida':   ['El Jadida','Sidi Bennour'],
+  'DC Settat':      ['Settat','Ben Slimane','Berrechid']
+};
+
+const palettes=[['#C9A84C','#0D0F14'],['#4A7CFF','#0D0F14'],['#E05252','#0D0F14'],['#4CAF50','#0D0F14'],['#9C5FF5','#0D0F14'],['#FF8C42','#0D0F14'],['#00BCD4','#0D0F14'],['#E91E8C','#0D0F14']];
+const memberColors=['#4A7CFF','#E05252','#4CAF50','#C9A84C','#9C5FF5','#FF8C42','#00BCD4','#E91E8C'];
+
+const TODAY=new Date(); TODAY.setHours(0,0,0,0);
+document.getElementById('footer-date').textContent='Aujourd\'hui : '+TODAY.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+
+function daysFromNow(n){const d=new Date(TODAY);d.setDate(d.getDate()+n);return d.toISOString().split('T')[0];}
+
+let companies=[
+  {id:1,nom:"BATIBUILD Construction",secteur:"Gros Œuvre & Charpente",adresse:"Zone industrielle, Rue des Artisans",ville:"Casablanca",tel:"+212 522 40 10 00",email:"contact@batibuild.ma",
+   dc:"DC Beni Mellal",villesTravaux:["Beni Mellal","Azilal"],villeTravaux:"Beni Mellal",
+   contratNum:"CTR-2024-0017",objet:"Construction d'un bâtiment administratif R+3 — Lot 2",dateNotif:"2024-01-15",duree:"18 mois",dateExp:daysFromNow(38),
+   conducteurs:[
+     {nom:"Kouassi Jean-Baptiste",tel:"+212 661 11 22 33",role:"Conducteur Principal",teams:[]},
+     {nom:"Diarra Fatou",tel:"+212 662 55 66 77",role:"Conducteur Adjoint",teams:[]}
+   ]},
+  {id:2,nom:"GBT Travaux Publics",secteur:"VRD & Terrassement",adresse:"Mers Sultan, Bd d'Anfa, Imm. Alpha",ville:"Casablanca",tel:"+212 522 25 30 40",email:"direction@gbt-tp.ma",
+   dc:"DC El Jadida",villesTravaux:["El Jadida","Sidi Bennour"],villeTravaux:"El Jadida",
+   contratNum:"CTR-2023-0089",objet:"Réhabilitation et bitumage de la voirie urbaine — Phase 2",dateNotif:"2023-06-01",duree:"24 mois",dateExp:daysFromNow(-12),
+   conducteurs:[
+     {nom:"N'Guessan Martial",tel:"+212 664 88 99 00",role:"Conducteur de Travaux",teams:[
+       {id:'t1',nom:'Équipe 1',membres:[
+         {nom:'Alami Youssef',prenom:'',cin:'BE123456',tel:'+212 661 11 11 11',qualite:'raccordeur',typeVehicule:'Camionnette',immat:'12345-A-6',gps:'https://maps.google.com/?q=33.5731,-7.5898'},
+         {nom:'Tazi Omar',prenom:'',cin:'BK789012',tel:'+212 662 22 22 22',qualite:'cableur',typeVehicule:'Véhicule léger',immat:'67890-B-7',gps:''}
+       ]}
+     ]}
+   ]},
+  {id:3,nom:"AFRICBAT SARL",secteur:"Bâtiment & Finitions",adresse:"Palmier, Rue des Orangers 87",ville:"Casablanca",tel:"+212 522 43 55 60",email:"africbat@africbat.ma",
+   dc:"DC Settat",villesTravaux:["Berrechid"],villeTravaux:"Berrechid",
+   contratNum:"CTR-2025-0003",objet:"Construction de 120 logements sociaux — Programme National de l'Habitat",dateNotif:"2025-02-10",duree:"36 mois",dateExp:"2028-02-10",
+   conducteurs:[
+     {nom:"Traoré Moussa",tel:"+212 661 33 44 55",role:"Conducteur Principal",teams:[]},
+     {nom:"Bamba Awa",tel:"+212 662 77 11 22",role:"Chef de Chantier",teams:[
+       {id:'t2',nom:'Équipe A',membres:[
+         {nom:'Benali Karim',prenom:'',cin:'BJ456789',tel:'+212 663 33 33 33',qualite:'raccordeur',typeVehicule:'Camion benne',immat:'11111-C-2',gps:'https://maps.google.com/?q=33.2316,-8.5007'},
+         {nom:'Filali Hassan',prenom:'',cin:'BE234567',tel:'+212 664 44 44 44',qualite:'raccordeur',typeVehicule:'Camionnette',immat:'22222-D-3',gps:'https://maps.google.com/?q=33.2316,-8.5007'},
+         {nom:'Ouali Samir',prenom:'',cin:'BK345678',tel:'+212 665 55 55 55',qualite:'cableur',typeVehicule:'Véhicule léger',immat:'33333-E-4',gps:''}
+       ]},
+       {id:'t3',nom:'Équipe B',membres:[]}
+     ]},
+     {nom:"Coulibaly Sékou",tel:"+212 663 99 88 77",role:"Conducteur Adjoint",teams:[]}
+   ]}
+];
+
+let editingId=null,currentFilter='all',searchQuery='';
+
+// ════════════════════════════════════════
+// FIREBASE — Realtime Database
+// ════════════════════════════════════════
+const FB_CONFIG = {
+  apiKey:            "AIzaSyA7V2e2T_cJWV4ttXkiVZgoa3tTpJCDcFk",
+  authDomain:        "annuaire-cmo-settat.firebaseapp.com",
+  databaseURL:       "https://annuaire-cmo-settat-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId:         "annuaire-cmo-settat",
+  storageBucket:     "annuaire-cmo-settat.firebasestorage.app",
+  messagingSenderId: "916943908317",
+  appId:             "1:916943908317:web:52520c405dbfa3ec9bda34"
+};
+
+let _db           = null;
+let _companiesRef = null;
+let _titleRef     = null;
+let _fbListening  = false;
+let _lastSaveTime = 0;
+let _fbOk         = false;
+
+function initFirebase() {
+  if(!window._FB || !window._FB.loaded) {
+    console.error('❌ Firebase SDK non chargé');
+    showStartupMessage(false,
+      '❌ Firebase indisponible',
+      'Scripts Firebase non chargés. Mode local activé — rechargez la page pour réessayer.');
+    fallbackLocal();
+    return;
+  }
+  try {
+    console.log('✅ Initialisation Firebase...');
+    const app = window._FB.getApps().length
+      ? window._FB.getApps()[0]
+      : window._FB.initializeApp(FB_CONFIG);
+
+    _db           = window._FB.getDatabase(app);
+    _companiesRef = window._FB.ref(_db, 'companies');
+    _titleRef     = window._FB.ref(_db, 'appTitle');
+
+    let _startupDone   = false;
+    let _everConnected = false;
+
+    // ── Connexion réelle ──
+    window._FB.onValue(window._FB.ref(_db, '.info/connected'), snap => {
+      const on = !!snap.val();
+      const dot = document.getElementById('connDot');
+      if(dot){ dot.style.background = on?'#4ADE80':'#FFB347'; dot.title = on?'En ligne':'Connexion en cours…'; }
+      if(on){
+        _fbOk = true; _everConnected = true;
+        setStatusBar('🟢 Connecté à Firebase — synchronisation temps réel', true, now());
+        if(!_startupDone){
+          _startupDone = true;
+          setTimeout(()=>{
+            showStartupMessage(true, '🟢 Connecté à Firebase',
+              'Synchronisation temps réel active — '+companies.length+' société(s) chargée(s) — modifications partagées avec vos collègues');
+          }, 1200);
+        }
+      } else {
+        _fbOk = false;
+        if(_everConnected) setStatusBar('🔴 Connexion Firebase perdue', false, now());
+      }
+    });
+
+    // Timeout 12s
+    setTimeout(()=>{
+      if(!_startupDone){ _startupDone=true;
+        showStartupMessage(false,'⚠️ Firebase inaccessible',
+          'Impossible de joindre Firebase. Mode local activé. Vérifiez votre connexion internet.');
+      }
+    }, 12000);
+
+    // ── Test écriture ──
+    window._FB.set(window._FB.ref(_db,'_ping'),{t:Date.now()})
+      .then(()=>{ console.log('✅ WRITE OK'); window._FB.remove(window._FB.ref(_db,'_ping')); })
+      .catch(err=>{ console.error('❌ WRITE bloqué:',err.code);
+        showFbConfirm('fail','❌ Écriture Firebase bloquée',
+          'Règles à corriger : Firebase Console → Realtime Database → Règles → ".write": true → Publier');
+      });
+
+    // ── Écoute données ──
+    window._FB.onValue(_companiesRef, snap=>{
+      if(Date.now()-_lastSaveTime<5000) return;
+      const data=snap.val();
+      if(data){ companies=Object.values(data).sort((a,b)=>(a.id||0)-(b.id||0)); render(); }
+      else saveData(true);
+    });
+
+    // ── Titre ──
+    window._FB.onValue(_titleRef, snap=>{ if(snap.val()) applyTitle(snap.val()); });
+
+    _fbListening = true;
+
+  } catch(e) {
+    console.error('Firebase error:',e);
+    showStartupMessage(false,'❌ Erreur Firebase',e.message);
+    fallbackLocal();
+  }
+}
+
+function fallbackLocal() {
+  _fbOk = false;
+  setStatusBar('⚠️ Firebase indisponible — données locales uniquement', false, now());
+  try {
+    const saved = localStorage.getItem('btp_annuaire_backup');
+    if(saved){ const p=JSON.parse(saved); if(Array.isArray(p)&&p.length){ companies=p; render(); } }
+  } catch(e){}
+}
+
+// ── Sauvegarde ──
+function saveData(silent=false) {
+  _lastSaveTime = Date.now();
+  try { localStorage.setItem('btp_annuaire_backup', JSON.stringify(companies)); } catch(e){}
+
+  if(!_fbOk || !_companiesRef || !window._FB){
+    if(!silent){
+      showFbConfirm('warn','⚠️ Sauvegardé localement uniquement',
+        'Pas de connexion Firebase — modifications non visibles par vos collègues');
+      setStatusBar('Mode local — modifications non partagées', false, now());
+    }
+    return;
+  }
+
+  if(!silent){
+    showFbConfirm('warn','⏳ Enregistrement en cours…','Envoi vers Firebase en attente de confirmation…',20000);
+    setStatusBar('Sauvegarde en cours…', true, '');
+  }
+
+  const obj={};
+  companies.forEach(c=>{ obj['c'+c.id]=c; });
+
+  window._FB.set(_companiesRef, obj)
+    .then(()=> window._FB.get(_companiesRef))
+    .then(snap=>{
+      const saved=snap.val();
+      if(saved && Object.keys(saved).length>0){
+        if(!silent){
+          showFbConfirm('ok','✅ Confirmé — données enregistrées dans Firebase',
+            'Vérification effectuée à '+now()+' — '+Object.keys(saved).length+' société(s) dans la base');
+          setStatusBar('✅ Sauvegarde confirmée par Firebase', true, now());
+        }
+      } else throw new Error('Données vides après sauvegarde');
+    })
+    .catch(err=>{
+      showFbConfirm('fail','❌ Échec — données NON enregistrées dans Firebase',
+        'Erreur : '+(err.message||'connexion interrompue')+' — sauvegarde locale conservée');
+      setStatusBar('❌ Échec de sauvegarde Firebase', false, now());
+      console.error('Save error:',err);
+    });
+}
+function now(){
+  return new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+}
+
+function saveTitleToFirebase(name){
+  if(_fbOk && _titleRef && window._FB)
+    window._FB.set(_titleRef, name).catch(console.error);
+}
+
+function clearData(){
+  if(!confirm('⚠️ Supprimer TOUTES les données pour TOUS les utilisateurs ?\nCette action est irréversible.')) return;
+  if(_fbOk && _companiesRef && window._FB){
+    window._FB.remove(_companiesRef).then(()=>location.reload()).catch(console.error);
+  } else {
+    localStorage.removeItem('btp_annuaire_backup'); location.reload();
+  }
+}
+
+// ── Toast discret ──
+function showToast(msg, type='success'){
+  const t=document.getElementById('saveToast');
+  if(!t) return;
+  const icons={'success':'✅','error':'❌','warn':'⚠️','info':'ℹ️'};
+  const icon = icons[type]||'💬';
+  t.innerHTML = `<span style="font-size:1.1rem">${icon}</span><span>${msg}</span>`;
+  t.className='save-toast show '+type;
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>t.classList.remove('show'), 3500);
+}
+
+// ── Bannière de confirmation Firebase ──
+let _confirmTimer = null;
+function showFbConfirm(type, title, sub, duration=5000){
+  const banner = document.getElementById('fbConfirm');
+  const icon   = document.getElementById('fbConfirmIcon');
+  const t      = document.getElementById('fbConfirmTitle');
+  const s      = document.getElementById('fbConfirmSub');
+  const bar    = document.getElementById('fbConfirmBar');
+  if(!banner) return;
+  icon.textContent = type==='ok'?'✅':type==='fail'?'❌':'⚠️';
+  t.textContent = title;
+  s.textContent = sub;
+  banner.className = 'fb-confirm show '+type;
+  bar.style.transition='none'; bar.style.width='100%';
+  setTimeout(()=>{ bar.style.transition=`width ${duration}ms linear`; bar.style.width='0%'; },30);
+  clearTimeout(_confirmTimer);
+  _confirmTimer = setTimeout(()=>hideFbConfirm(), duration);
+}
+function hideFbConfirm(){
+  const b=document.getElementById('fbConfirm');
+  if(b) b.classList.remove('show');
+  clearTimeout(_confirmTimer);
+}
+
+// ── Message de démarrage — connexion Firebase ──
+function showStartupMessage(connected, title, detail) {
+  const overlay = document.getElementById('startupModalOverlay');
+  const modal   = document.getElementById('startupModal');
+  const icon    = document.getElementById('smIcon');
+  const ttl     = document.getElementById('smTitle');
+  const det     = document.getElementById('smDetail');
+  const time    = document.getElementById('smTime');
+  const btn     = document.getElementById('smBtn');
+  if(!overlay) return;
+
+  if(connected){
+    modal.style.borderColor   = 'rgba(74,222,128,0.5)';
+    icon.textContent          = '🟢';
+    icon.style.background     = 'rgba(74,222,128,0.15)';
+    icon.style.border         = '2px solid #4ADE80';
+    btn.style.background      = '#4ADE80';
+    btn.style.color           = '#003010';
+    btn.textContent           = '✅ Continuer';
+  } else {
+    modal.style.borderColor   = 'rgba(255,107,107,0.5)';
+    icon.textContent          = '🔴';
+    icon.style.background     = 'rgba(255,107,107,0.15)';
+    icon.style.border         = '2px solid #FF6B6B';
+    btn.style.background      = '#FF6B6B';
+    btn.style.color           = '#fff';
+    btn.textContent           = '⚠️ Continuer quand même';
+  }
+
+  ttl.textContent  = title;
+  det.textContent  = detail;
+  time.textContent = 'Heure : ' + now();
+
+  // S'assurer que le modal est visible
+  overlay.classList.add('show');
+}
+
+function closeStartupModal(){
+  const m = document.getElementById('startupModalOverlay');
+  if(m) m.classList.remove('show');
+}
+
+// ── Barre de statut ──
+function setStatusBar(text, ok, time=''){
+  const bar=document.getElementById('fbStatusBar');
+  const txt=document.getElementById('fbStatusText');
+  const tim=document.getElementById('fbStatusTime');
+  if(!bar||!txt) return;
+  txt.textContent=text;
+  if(tim) tim.textContent=time;
+  bar.className='fb-status-bar show '+(ok?'ok':'fail');
+  // Auto-masquer après 6 secondes si OK
+  clearTimeout(bar._timer);
+  if(ok) bar._timer=setTimeout(()=>bar.classList.remove('show'),6000);
+}
+
+// Renommer + sync Firebase
+function confirmRenameAndSync(){
+  const val=document.getElementById('renameInput').value.trim();
+  if(!val){document.getElementById('renameInput').focus();return;}
+  applyTitle(val); saveTitleToFirebase(val); closeRenameModal();
+}
+
+// ── Sauvegarde du titre partagé ──
+function saveTitleToFirebase(name) {
+  if(titleRef) titleRef.set(name).catch(console.error);
+}
+
+// ── Réinitialiser ──
+function clearData() {
+  if(!confirm('⚠️ Supprimer TOUTES les données pour TOUS les utilisateurs ?\n\nCette action est irréversible.')) return;
+  if(companiesRef) {
+    companiesRef.remove().then(() => location.reload()).catch(console.error);
+  } else {
+    localStorage.removeItem('btp_annuaire_backup');
+    location.reload();
+  }
+}
+
+// Toast notification
+function showToast(msg, type='success') {
+  const toast = document.getElementById('saveToast');
+  if(!toast) return;
+  toast.textContent = msg;
+  toast.className = 'save-toast show ' + type;
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// ── Patch confirmRename pour sync Firebase ──
+function confirmRenameAndSync() {
+  const val = document.getElementById('renameInput').value.trim();
+  if(!val) { document.getElementById('renameInput').focus(); return; }
+  applyTitle(val);
+  saveTitleToFirebase(val);
+  closeRenameModal();
+}
+
+// ════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════
+let currentCondRef = null; // {companyId, condIndex}
+
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function openConducteurPage(companyId, condIndex){
+  const c = companies.find(x=>x.id===companyId);
+  const cond = c.conducteurs[condIndex];
+  currentCondRef = {companyId, condIndex};
+  const ini = cond.nom.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  document.getElementById('detail-avatar').textContent = ini;
+  document.getElementById('detail-name').textContent = cond.nom;
+  document.getElementById('detail-company-name').textContent = c.nom;
+  document.getElementById('detail-role').textContent = cond.role || 'Conducteur';
+  document.getElementById('detail-tel').textContent = '📞 '+(cond.tel||'—');
+  document.getElementById('bc-company').textContent = c.nom;
+  document.getElementById('bc-cond').textContent = cond.nom;
+  renderTeams();
+  showPage('conducteur');
+}
+
+// ════════════════════════════════════════
+// HELPERS
+// ════════════════════════════════════════
+function parseDate(s){if(!s)return null;const d=new Date(s);d.setHours(0,0,0,0);return isNaN(d)?null:d;}
+function fmtDate(s){const d=parseDate(s);if(!d)return '—';return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'});}
+function daysUntil(s){const d=parseDate(s);if(!d)return null;return Math.round((d-TODAY)/86400000);}
+function contractStatus(s){
+  const days=daysUntil(s);
+  if(days===null)return{cls:'',badge:'',type:'none'};
+  if(days<0)return{cls:'card-expired',badge:`<span class="expiry-badge badge-exp">⛔ Expiré il y a ${Math.abs(days)} j</span>`,type:'expired'};
+  if(days<=60)return{cls:'card-expiring',badge:`<span class="expiry-badge badge-warn">⚠️ Expire dans ${days} j</span>`,type:'expiring'};
+  return{cls:'',badge:`<span class="expiry-badge badge-ok">✅ ${days} j restants</span>`,type:'ok'};
+}
+function genId(){return 't'+Date.now()+Math.random().toString(36).slice(2,6);}
+
+// ════════════════════════════════════════
+// ALERT BANNER
+// ════════════════════════════════════════
+function updateAlertBanner(){
+  const alerts=companies.filter(c=>{const st=contractStatus(c.dateExp);return st.type==='expiring'||st.type==='expired';});
+  document.getElementById('stat-alerts').textContent=alerts.length;
+  const banner=document.getElementById('alertBanner');
+  if(alerts.length===0){banner.classList.remove('show');return;}
+  banner.classList.add('show');
+  document.getElementById('alertItems').innerHTML=alerts.map(c=>{
+    const days=daysUntil(c.dateExp);const isExp=days!==null&&days<0;
+    return`<div class="alert-item"><div class="dot-exp ${isExp?'dot-critical':'dot-warning'}"></div>
+      <strong>${c.nom}</strong> — ${c.contratNum||'Contrat'} :
+      ${isExp?`expiré il y a <strong>${Math.abs(days)} jours</strong>`:`expire dans <strong>${days} jours</strong>`}
+      (${fmtDate(c.dateExp)})</div>`;
+  }).join('');
+}
+
+// ════════════════════════════════════════
+// RENDER MAIN
+// ════════════════════════════════════════
+function render(){
+  const grid=document.getElementById('cardsGrid');
+  const empty=document.getElementById('emptyState');
+  const q=searchQuery.toLowerCase();
+  let filtered=companies.filter(c=>{
+    const ms=!q||c.nom.toLowerCase().includes(q)||(c.ville||'').toLowerCase().includes(q)||(c.email||'').toLowerCase().includes(q)||(c.adresse||'').toLowerCase().includes(q)||(c.contratNum||'').toLowerCase().includes(q)||(c.objet||'').toLowerCase().includes(q)||(c.dc||'').toLowerCase().includes(q)||((c.villesTravaux||[c.villeTravaux].filter(Boolean)).some(v=>v.toLowerCase().includes(q)))||c.conducteurs.some(k=>k.nom.toLowerCase().includes(q));
+    if(!ms)return false;
+    if(currentFilter==='expiring'){const st=contractStatus(c.dateExp);return st.type==='expiring'||st.type==='expired';}
+    if(currentFilter==='valid'){const st=contractStatus(c.dateExp);return st.type==='ok';}
+    return true;
+  });
+  document.getElementById('visibleCount').textContent=filtered.length+' résultat'+(filtered.length>1?'s':'');
+  document.getElementById('stat-societes').textContent=companies.length;
+  document.getElementById('stat-conducteurs').textContent=companies.reduce((a,c)=>a+c.conducteurs.length,0);
+  updateAlertBanner();
+  if(filtered.length===0){grid.innerHTML='';empty.classList.add('show');return;}
+  empty.classList.remove('show');
+
+  grid.innerHTML=filtered.map((c,i)=>{
+    const pal=palettes[c.id%palettes.length];
+    const ini=c.nom.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
+    const st=contractStatus(c.dateExp);
+    const totalTeams=c.conducteurs.reduce((a,k)=>a+(k.teams?k.teams.length:0),0);
+    const totalMembers=c.conducteurs.reduce((a,k)=>a+(k.teams?k.teams.reduce((b,t)=>b+(t.membres?t.membres.length:0),0):0),0);
+
+    const condHTML=c.conducteurs.length
+      ?c.conducteurs.map((k,ki)=>{
+          const ini2=k.nom.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+          const teamCount=k.teams?k.teams.length:0;
+          const memberCount=k.teams?k.teams.reduce((a,t)=>a+(t.membres?t.membres.length:0),0):0;
+          return`<div class="conducteur-item">
+            <div class="cond-avatar">${ini2}</div>
+            <div class="cond-info">
+              <div class="cond-name">${k.nom}</div>
+              <div class="cond-tel">📞 <a href="tel:${k.tel}">${k.tel}</a>${teamCount>0?` · <span style="color:var(--purple);font-size:0.75rem">${teamCount} équipe${teamCount>1?'s':''} · ${memberCount} membre${memberCount>1?'s':''}</span>`:''}</div>
+            </div>
+            <span class="cond-role">${k.role||'Conducteur'}</span>
+            <button class="btn-rename-cond" onclick="openRenameCond(${c.id},${ki})" title="Renommer">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
+            <button class="btn-detail" onclick="openConducteurPage(${c.id},${ki})">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              Équipes
+            </button>
+          </div>`;}).join('')
+      :`<div style="color:var(--muted);font-size:0.82rem;text-align:center;padding:8px 0">Aucun conducteur enregistré</div>`;
+
+    return`<div class="card ${st.cls}" style="animation-delay:${i*0.07}s">
+      <div class="card-header">
+        <div class="company-avatar" style="background:${pal[0]}20;border-color:${pal[0]}40;color:${pal[0]}">${ini}</div>
+        <div class="company-meta">
+          <div class="company-name">${c.nom}</div>
+          <div class="company-badge"><div class="status-dot"></div>${c.secteur||'BTP'}</div>
+        </div>
+        <div class="card-actions">
+          <button class="act-btn" style="background:var(--dark-4);border-color:var(--border);color:var(--gold)" onclick="editCompany(${c.id})" title="Modifier">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="act-btn" style="background:rgba(224,82,82,0.08);border-color:rgba(224,82,82,0.2);color:var(--red)" onclick="deleteCompany(${c.id})" title="Supprimer">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="info-row">
+          <div class="info-icon" style="color:#E05252"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="info-content"><div class="info-label">Adresse</div><div class="info-value">${c.adresse}</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon" style="color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="info-content"><div class="info-label">Téléphone</div><div class="info-value"><a href="tel:${c.tel}">${c.tel}</a></div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon" style="color:var(--accent)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="info-content"><div class="info-label">E-mail</div><div class="info-value"><a href="mailto:${c.email}">${c.email}</a></div></div>
+        </div>
+        ${c.dc||(c.villesTravaux||[]).length||(c.villeTravaux)?`
+        <div class="info-row">
+          <div class="info-icon" style="color:#DDA0FF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div>
+          <div class="info-content">
+            <div class="info-label">Lieu des Travaux</div>
+            <div class="lieu-tags">
+              ${c.dc?`<span class="lieu-tag lieu-tag-dc">🏢 ${c.dc.replace('DC ','Dél. Com. ')}</span>`:''}
+              ${(c.villesTravaux||[c.villeTravaux].filter(Boolean)).map(v=>`<span class="lieu-tag">📍 ${v}</span>`).join('')}
+            </div>
+          </div>
+        </div>`:''}
+      </div>
+      ${c.contratNum||c.objet||c.dateExp?`
+      <div class="contract-block">
+        <div class="contract-top">
+          <div class="contract-tag">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span>Contrat</span>
+          </div>
+          ${c.contratNum?`<span class="contract-num-badge">${c.contratNum}</span>`:''}
+        </div>
+        ${c.objet?`<div class="contract-objet">« ${c.objet} »</div>`:''}
+        <div class="contract-dates-grid">
+          <div class="date-cell"><div class="date-cell-label">📅 Notification</div><div class="date-cell-value">${fmtDate(c.dateNotif)}</div></div>
+          <div class="date-cell"><div class="date-cell-label">⏱ Durée</div><div class="duree-val">${c.duree||'—'}</div></div>
+          <div class="date-cell"><div class="date-cell-label">🔚 Expiration</div><div class="date-cell-value">${fmtDate(c.dateExp)}</div>${st.badge}</div>
+        </div>
+      </div>`:''}
+      <div class="conducteurs-section">
+        <div class="conducteurs-title"><span>Conducteurs de Travaux</span></div>
+        <div class="conducteurs-list">${condHTML}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ════════════════════════════════════════
+// RENDER TEAMS (conducteur detail page)
+// ════════════════════════════════════════
+function renderTeams(){
+  if(!currentCondRef) return;
+  const c=companies.find(x=>x.id===currentCondRef.companyId);
+  const cond=c.conducteurs[currentCondRef.condIndex];
+  const teams=cond.teams||[];
+  const totalMembers=teams.reduce((a,t)=>a+(t.membres?t.membres.length:0),0);
+  const totalRacc=teams.reduce((a,t)=>a+(t.membres?t.membres.filter(m=>m.qualite==='raccordeur').length:0),0);
+  document.getElementById('ds-teams').textContent=teams.length;
+  document.getElementById('ds-members').textContent=totalMembers;
+  document.getElementById('ds-raccordeurs').textContent=totalRacc;
+
+  const grid=document.getElementById('teamsGrid');
+  const empty=document.getElementById('teamsEmptyState');
+  if(teams.length===0){grid.innerHTML='';empty.classList.add('show');return;}
+  empty.classList.remove('show');
+
+  grid.innerHTML=teams.map((team,ti)=>{
+    const membresHTML=team.membres&&team.membres.length
+      ?`<table class="members-table">
+          <thead><tr>
+            <th>Nom & Prénom</th><th>N° CIN</th><th>Téléphone</th><th>Qualité</th><th>Type Véhicule</th><th>N° Immat.</th><th>Suivi GPS</th><th></th>
+          </tr></thead>
+          <tbody>${team.membres.map((m,mi)=>{
+            const ini3=(m.nom||'?')[0].toUpperCase();
+            const col=memberColors[mi%memberColors.length];
+            const qcls=m.qualite==='raccordeur'?'q-raccordeur':m.qualite==='cableur'?'q-cableur':'q-autre';
+            const qlabel=m.qualite==='raccordeur'?'🔌 Raccordeur':m.qualite==='cableur'?'🔧 Câbleur (Ouvrier)':'Autre';
+            return`<tr>
+              <td><div class="member-name-cell"><div class="member-mini-avatar" style="background:${col}">${ini3}</div>${m.nom}${m.prenom?' '+m.prenom:''}</div></td>
+              <td style="color:var(--muted);font-family:monospace">${m.cin||'—'}</td>
+              <td><a href="tel:${m.tel}" style="color:var(--accent);text-decoration:none">${m.tel||'—'}</a></td>
+              <td><span class="qualite-badge ${qcls}">${qlabel}</span></td>
+              <td><span class="vehicle-type">${m.typeVehicule||'—'}</span></td>
+              <td>${m.immat?`<span class="vehicle-badge">🚗 ${m.immat}</span>`:'—'}</td>
+              <td>${m.gps?`<a href="${m.gps}" target="_blank" class="gps-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>📡 GPS</a>`:'—'}</td>
+              <td><button class="btn-del-member" onclick="deleteMember(${ti},${mi})" title="Supprimer">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button></td>
+            </tr>`;
+          }).join('')}</tbody>
+        </table>`
+      :`<div class="empty-team">Aucun membre — <button class="btn-add-member" style="display:inline-flex;width:auto;margin-top:0" onclick="openMemberModal(${ti})">+ Ajouter</button></div>`;
+
+    return`<div class="team-card">
+      <div class="team-card-header">
+        <div class="team-name">
+          <div class="team-icon">👷</div>
+          <div><div class="team-title">${team.nom}</div><div class="team-subtitle">${(team.membres||[]).length} membre${(team.membres||[]).length>1?'s':''}</div></div>
+        </div>
+        <div class="team-actions">
+          <button class="team-act" style="background:rgba(74,124,255,0.1);border-color:rgba(74,124,255,0.3);color:var(--accent)" onclick="openMemberModal(${ti})" title="Ajouter des membres">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <button class="team-act" style="background:rgba(224,82,82,0.08);border-color:rgba(224,82,82,0.2);color:var(--red)" onclick="deleteTeam(${ti})" title="Supprimer l'équipe">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="team-members">${membresHTML}</div>
+    </div>`;
+  }).join('');
+}
+
+// ════════════════════════════════════════
+// TEAM CRUD
+// ════════════════════════════════════════
+let editingTeamIndex=null;
+function openTeamModal(){
+  editingTeamIndex=null;
+  document.getElementById('teamModalTitle').textContent='Nouvelle équipe';
+  document.getElementById('tf-nom').value='';
+  document.getElementById('teamModalOverlay').classList.add('open');
+}
+function closeTeamModal(){document.getElementById('teamModalOverlay').classList.remove('open');}
+function closeTeamModalOnOutside(e){if(e.target===document.getElementById('teamModalOverlay'))closeTeamModal();}
+function saveTeam(){
+  const nom=document.getElementById('tf-nom').value.trim();
+  if(!nom){alert('Donnez un nom à l\'équipe.');return;}
+  const c=companies.find(x=>x.id===currentCondRef.companyId);
+  const cond=c.conducteurs[currentCondRef.condIndex];
+  if(!cond.teams)cond.teams=[];
+  cond.teams.push({id:genId(),nom,membres:[]});
+  closeTeamModal();saveData();renderTeams();
+}
+function deleteTeam(ti){
+  if(!confirm('Supprimer cette équipe ?'))return;
+  const c=companies.find(x=>x.id===currentCondRef.companyId);
+  c.conducteurs[currentCondRef.condIndex].teams.splice(ti,1);
+  saveData();renderTeams();
+}
+
+// ════════════════════════════════════════
+// MEMBER CRUD
+// ════════════════════════════════════════
+let currentTeamIndex=null;
+let memberCount=0;
+
+function openMemberModal(ti){
+  currentTeamIndex=ti;
+  memberCount=0;
+  document.getElementById('memberFields').innerHTML='';
+  addMemberField();
+  document.getElementById('memberModalOverlay').classList.add('open');
+}
+function closeMemberModal(){document.getElementById('memberModalOverlay').classList.remove('open');}
+function closeMemberModalOnOutside(e){if(e.target===document.getElementById('memberModalOverlay'))closeMemberModal();}
+
+function addMemberField(data={}){
+  memberCount++;const id=memberCount;
+  const div=document.createElement('div');div.className='member-form-row';div.id='mrow-'+id;
+  div.innerHTML=`
+    <input type="text" placeholder="Nom Prénom" value="${data.nom||''}">
+    <input type="text" placeholder="N° CIN" value="${data.cin||''}">
+    <input type="tel" placeholder="Téléphone" value="${data.tel||''}">
+    <select>
+      <option value="raccordeur" ${data.qualite==='raccordeur'?'selected':''}>🔌 Raccordeur</option>
+      <option value="cableur" ${data.qualite==='cableur'?'selected':''}>🔧 Câbleur (Ouvrier)</option>
+      <option value="autre" ${data.qualite==='autre'?'selected':''}>Autre</option>
+    </select>
+    <input type="text" placeholder="Type véhicule (ex: Camionnette)" value="${data.typeVehicule||''}">
+    <input type="text" placeholder="N° Immatriculation" value="${data.immat||''}" style="font-family:monospace">
+    <input type="url" placeholder="Lien GPS (https://...)" value="${data.gps||''}">
+    <button class="btn-remove-row" onclick="document.getElementById('mrow-${id}').remove()" style="height:36px">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>`;
+  document.getElementById('memberFields').appendChild(div);
+}
+
+function saveMembers(){
+  const c=companies.find(x=>x.id===currentCondRef.companyId);
+  const team=c.conducteurs[currentCondRef.condIndex].teams[currentTeamIndex];
+  const rows=document.querySelectorAll('#memberFields .member-form-row');
+  rows.forEach(row=>{
+    const inputs=row.querySelectorAll('input');
+    const sel=row.querySelector('select');
+    const nom=inputs[0].value.trim();
+    if(!nom)return;
+    team.membres.push({
+      nom, prenom:'',
+      cin:inputs[1].value.trim(),
+      tel:inputs[2].value.trim(),
+      qualite:sel.value,
+      typeVehicule:inputs[3].value.trim(),
+      immat:inputs[4].value.trim(),
+      gps:inputs[5].value.trim()
+    });
+  });
+  closeMemberModal();saveData();renderTeams();
+}
+
+function deleteMember(ti,mi){
+  if(!confirm('Supprimer ce membre ?'))return;
+  const c=companies.find(x=>x.id===currentCondRef.companyId);
+  c.conducteurs[currentCondRef.condIndex].teams[ti].membres.splice(mi,1);
+  saveData();renderTeams();
+}
+
+// ════════════════════════════════════════
+// MAIN COMPANY MODAL
+// ════════════════════════════════════════
+
+// Multi-select state
+let selectedVilles = [];
+
+function updateVilleSelect(){
+  const dc = document.getElementById('f-dc').value;
+  const dropdown = document.getElementById('villeMultiDropdown');
+  selectedVilles = [];
+  dropdown.innerHTML = '';
+  if(!DC_VILLES[dc]){
+    updateVilleDisplay();
+    return;
+  }
+  DC_VILLES[dc].forEach(v => {
+    const div = document.createElement('div');
+    div.className = 'ms-option';
+    div.dataset.val = v;
+    div.innerHTML = `<div class="ms-checkbox">✓</div><span>${v}</span>`;
+    div.onclick = (e) => { e.stopPropagation(); toggleVille(v, div); };
+    dropdown.appendChild(div);
+  });
+  updateVilleDisplay();
+}
+
+function toggleVille(val, el) {
+  const idx = selectedVilles.indexOf(val);
+  if(idx >= 0) {
+    selectedVilles.splice(idx, 1);
+    el.classList.remove('selected');
+  } else {
+    selectedVilles.push(val);
+    el.classList.add('selected');
+  }
+  updateVilleDisplay();
+}
+
+function updateVilleDisplay() {
+  const display = document.getElementById('villeMultiDisplay');
+  const text = document.getElementById('villeMultiText');
+  const dc = document.getElementById('f-dc').value;
+  if(!dc) {
+    text.innerHTML = `<span style="color:rgba(255,255,255,0.45)">— Choisir d'abord une DC —</span>`;
+    return;
+  }
+  if(selectedVilles.length === 0) {
+    text.innerHTML = `<span style="color:rgba(255,255,255,0.45)">— Sélectionner une ou plusieurs villes —</span>`;
+  } else {
+    text.innerHTML = `<div class="multi-select-tags">${selectedVilles.map(v =>
+      `<span class="ms-tag">${v}<span class="ms-tag-remove" onclick="removeVille('${v}',event)">✕</span></span>`
+    ).join('')}</div>`;
+  }
+}
+
+function removeVille(val, e) {
+  e.stopPropagation();
+  selectedVilles = selectedVilles.filter(v => v !== val);
+  // Uncheck in dropdown
+  document.querySelectorAll('#villeMultiDropdown .ms-option').forEach(el => {
+    if(el.dataset.val === val) el.classList.remove('selected');
+  });
+  updateVilleDisplay();
+}
+
+function toggleVilleDropdown(e) {
+  e.stopPropagation();
+  const dc = document.getElementById('f-dc').value;
+  if(!dc) return;
+  const display = document.getElementById('villeMultiDisplay');
+  const dropdown = document.getElementById('villeMultiDropdown');
+  const isOpen = dropdown.classList.contains('open');
+  if(isOpen) {
+    dropdown.classList.remove('open');
+    display.classList.remove('open');
+  } else {
+    dropdown.classList.add('open');
+    display.classList.add('open');
+  }
+}
+
+// Close dropdown on outside click
+document.addEventListener('click', () => {
+  document.getElementById('villeMultiDropdown')?.classList.remove('open');
+  document.getElementById('villeMultiDisplay')?.classList.remove('open');
+});
+
+function setSelectedVilles(villes) {
+  // villes can be array or legacy string
+  selectedVilles = Array.isArray(villes) ? [...villes] : (villes ? [villes] : []);
+  // Update checkboxes
+  document.querySelectorAll('#villeMultiDropdown .ms-option').forEach(el => {
+    if(selectedVilles.includes(el.dataset.val)) el.classList.add('selected');
+    else el.classList.remove('selected');
+  });
+  updateVilleDisplay();
+}
+
+let condCount=0;
+function addCondField(data={}){
+  condCount++;const id=condCount;
+  const div=document.createElement('div');div.className='cond-fields-row';div.id='cond-row-'+id;
+  div.innerHTML=`<input type="text" placeholder="Nom complet" value="${data.nom||''}"><input type="tel" placeholder="Téléphone" value="${data.tel||''}"><input type="text" placeholder="Rôle/Fonction" value="${data.role||''}"><button class="btn-remove-cond" onclick="removeCondField(${id})"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
+  document.getElementById('condFields').appendChild(div);
+}
+function removeCondField(id){const el=document.getElementById('cond-row-'+id);if(el)el.remove();}
+
+function openModal(prefill=null){
+  editingId=prefill?prefill.id:null;
+  document.getElementById('modalTitle').textContent=prefill?'Modifier la société':'Nouvelle société';
+  ['nom','secteur','adresse','ville','tel','email'].forEach(k=>document.getElementById('f-'+k).value=prefill?.[k]||'');
+  document.getElementById('f-contrat-num').value=prefill?.contratNum||'';
+  document.getElementById('f-objet').value=prefill?.objet||'';
+  document.getElementById('f-date-notif').value=prefill?.dateNotif||'';
+  // duree stored as string like "12" or "12 mois" — extract number
+  const dureeRaw = prefill?.duree||'';
+  const dureeNum = parseInt(dureeRaw)||'';
+  document.getElementById('f-duree').value=dureeNum;
+  document.getElementById('f-date-exp').value=prefill?.dateExp||'';
+  // Restore expiry display
+  const label=document.getElementById('f-date-exp-label');
+  if(prefill?.dateExp){
+    label.textContent=fmtDate(prefill.dateExp);
+    label.style.color='var(--green)';
+  } else {
+    label.textContent='Saisir date de notification + délai';
+    label.style.color='var(--muted)';
+  }
+  // DC & ville travaux (multi)
+  document.getElementById('f-dc').value=prefill?.dc||'';
+  updateVilleSelect();
+  // Restore previously selected villes
+  const savedVilles = prefill?.villesTravaux || (prefill?.villeTravaux ? [prefill.villeTravaux] : []);
+  setSelectedVilles(savedVilles);
+  document.getElementById('condFields').innerHTML='';condCount=0;
+  if(prefill?.conducteurs?.length)prefill.conducteurs.forEach(k=>addCondField(k));else addCondField();
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');editingId=null;}
+function closeModalOnOutside(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
+function editCompany(id){const c=companies.find(x=>x.id===id);if(c)openModal(c);}
+function deleteCompany(id){if(confirm('Supprimer cette société ?')){companies=companies.filter(c=>c.id!==id);saveData();render();}}
+
+function saveCompany(){
+  const nom=document.getElementById('f-nom').value.trim();
+  if(!nom){alert('Le nom de la société est requis.');return;}
+  const adresse=document.getElementById('f-adresse').value.trim();
+  if(!adresse){alert("L'adresse est requise.");return;}
+  const rows=document.querySelectorAll('#condFields .cond-fields-row');
+  const conducteurs=[];
+  // Keep existing teams if editing
+  const existing=editingId?companies.find(c=>c.id===editingId):null;
+  rows.forEach((row,ri)=>{
+    const inp=row.querySelectorAll('input');
+    const n=inp[0].value.trim(),t=inp[1].value.trim(),r=inp[2].value.trim();
+    if(n){
+      const existTeams=existing&&existing.conducteurs[ri]?existing.conducteurs[ri].teams:[];
+      conducteurs.push({nom:n,tel:t,role:r,teams:existTeams});
+    }
+  });
+  const dureeVal = parseInt(document.getElementById('f-duree').value)||0;
+  const dureeStr = dureeVal > 0 ? dureeVal+' mois' : '';
+  const data={nom,secteur:document.getElementById('f-secteur').value.trim(),adresse,ville:document.getElementById('f-ville').value.trim(),tel:document.getElementById('f-tel').value.trim(),email:document.getElementById('f-email').value.trim(),dc:document.getElementById('f-dc').value,villesTravaux:[...selectedVilles],villeTravaux:selectedVilles[0]||'',contratNum:document.getElementById('f-contrat-num').value.trim(),objet:document.getElementById('f-objet').value.trim(),dateNotif:document.getElementById('f-date-notif').value,duree:dureeStr,dateExp:document.getElementById('f-date-exp').value,conducteurs};
+  if(editingId){const idx=companies.findIndex(c=>c.id===editingId);companies[idx]={...data,id:editingId};}
+  else{const newId=companies.length?Math.max(...companies.map(c=>c.id))+1:1;companies.push({...data,id:newId});}
+  closeModal();saveData();render();
+}
+
+function filterCards(){searchQuery=document.getElementById('searchInput').value;render();}
+function setFilter(f,btn){currentFilter=f;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
+
+// ════════════════════════════════════════
+// AUTO CALC EXPIRY
+// ════════════════════════════════════════
+function autoCalcExpiry() {
+  const notif = document.getElementById('f-date-notif').value;
+  const duree = parseInt(document.getElementById('f-duree').value);
+  const label = document.getElementById('f-date-exp-label');
+  const hidden = document.getElementById('f-date-exp');
+  if(notif && duree > 0) {
+    const d = new Date(notif);
+    d.setMonth(d.getMonth() + duree);
+    d.setDate(d.getDate() - 1);
+    const iso = d.toISOString().split('T')[0];
+    hidden.value = iso;
+    label.textContent = fmtDate(iso);
+    label.style.color = 'var(--green)';
+  } else {
+    hidden.value = '';
+    label.textContent = 'Saisir date de notification + délai';
+    label.style.color = 'var(--muted)';
+  }
+}
+
+// ════════════════════════════════════════
+// RENAME CONDUCTEUR
+// ════════════════════════════════════════
+let renameCondRef = null;
+
+function openRenameCond(companyId, condIndex) {
+  const c = companies.find(x=>x.id===companyId);
+  const k = c.conducteurs[condIndex];
+  renameCondRef = {companyId, condIndex};
+  document.getElementById('rc-nom').value   = k.nom   || '';
+  document.getElementById('rc-tel').value   = k.tel   || '';
+  document.getElementById('rc-role').value  = k.role  || '';
+  document.getElementById('rcPreviewVal').textContent = k.nom || '…';
+  document.getElementById('renameCondSub').textContent = `Modifier les infos de ${k.nom}`;
+  document.getElementById('renameCondOverlay').classList.add('open');
+  setTimeout(() => { const i=document.getElementById('rc-nom'); i.focus(); i.select(); }, 120);
+}
+function closeRenameCond() {
+  document.getElementById('renameCondOverlay').classList.remove('open');
+  renameCondRef = null;
+}
+function confirmRenameCond() {
+  const nom = document.getElementById('rc-nom').value.trim();
+  if(!nom) { document.getElementById('rc-nom').focus(); return; }
+  if(!renameCondRef) return;
+  const c = companies.find(x=>x.id===renameCondRef.companyId);
+  const k = c.conducteurs[renameCondRef.condIndex];
+  k.nom  = nom;
+  k.tel  = document.getElementById('rc-tel').value.trim()  || k.tel;
+  k.role = document.getElementById('rc-role').value.trim() || k.role;
+  closeRenameCond();
+  saveData();
+  render();
+  // If we're on the conducteur page for this person, update header too
+  if(currentCondRef &&
+     currentCondRef.companyId === renameCondRef?.companyId &&
+     currentCondRef.condIndex  === renameCondRef?.condIndex) {
+    document.getElementById('detail-name').textContent = nom;
+    document.getElementById('detail-role').textContent = k.role || 'Conducteur';
+    document.getElementById('detail-tel').textContent  = '📞 '+(k.tel||'—');
+    document.getElementById('bc-cond').textContent     = nom;
+    const ini = nom.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+    document.getElementById('detail-avatar').textContent = ini;
+  }
+}
+
+// ════════════════════════════════════════
+// APP TITLE — RENAME & PERSIST
+// ════════════════════════════════════════
+const DEFAULT_TITLE = 'Annuaire des prestataires travaillant pour le compte du CMO Settat';
+
+function applyTitle(name) {
+  const t = name || DEFAULT_TITLE;
+  document.getElementById('appTitle').textContent     = t;
+  document.getElementById('heroEyebrow').textContent  = t;
+  document.getElementById('footerTitle').textContent  = t;
+  document.title = t;
+  try { localStorage.setItem('annuaire_title', t); } catch(e){}
+}
+
+function openRenameModal() {
+  const cur = document.getElementById('appTitle').textContent;
+  document.getElementById('renameInput').value = cur;
+  document.getElementById('renamePreviewVal').textContent = cur;
+  document.getElementById('renameModalOverlay').classList.add('open');
+  setTimeout(() => {
+    const inp = document.getElementById('renameInput');
+    inp.focus(); inp.select();
+  }, 120);
+}
+function closeRenameModal() {
+  document.getElementById('renameModalOverlay').classList.remove('open');
+}
+function closeRenameOnOutside(e) {
+  if(e.target === document.getElementById('renameModalOverlay')) closeRenameModal();
+}
+function confirmRename() {
+  const val = document.getElementById('renameInput').value.trim();
+  if(!val) { document.getElementById('renameInput').focus(); return; }
+  applyTitle(val);
+  closeRenameModal();
+}
+
+// Init title from localStorage
+(function(){
+  try {
+    const saved = localStorage.getItem('annuaire_title');
+    if(saved) applyTitle(saved);
+  } catch(e){}
+})();
+
+// ════════════════════════════════════════
+// SAVE DIALOG
+// ════════════════════════════════════════
+let pendingExportFn = null;
+
+function openSaveDialog(title, defaultName, sheets, exportFn) {
+  document.getElementById('sdTitle').textContent = title;
+  document.getElementById('sdFilename').value = defaultName;
+  document.getElementById('sdSheets').innerHTML = sheets.map(s =>
+    `<div class="save-sheet-item">
+      <div class="save-sheet-dot"></div>
+      <span class="save-sheet-name">${s.icon} ${s.name}</span>
+      <span class="save-sheet-count">${s.count}</span>
+    </div>`
+  ).join('');
+  document.getElementById('sdConfirmText').textContent = 'Télécharger';
+  document.getElementById('dlSpinner').style.display = 'none';
+  document.getElementById('sdConfirmBtn').disabled = false;
+  pendingExportFn = exportFn;
+  document.getElementById('saveDialogOverlay').classList.add('open');
+  setTimeout(()=>{ document.getElementById('sdFilename').select(); }, 120);
+}
+
+function closeSaveDialog() {
+  document.getElementById('saveDialogOverlay').classList.remove('open');
+  pendingExportFn = null;
+}
+
+function closeSaveDialogOnOutside(e) {
+  if(e.target === document.getElementById('saveDialogOverlay')) closeSaveDialog();
+}
+
+async function confirmSave() {
+  let name = document.getElementById('sdFilename').value.trim();
+  if(!name) { document.getElementById('sdFilename').focus(); return; }
+  name = name.replace(/\.xlsx$/i, '');
+  if(!name) { document.getElementById('sdFilename').focus(); return; }
+
+  // Show loading state
+  document.getElementById('sdConfirmText').textContent = 'Génération…';
+  document.getElementById('dlSpinner').style.display = 'block';
+  document.getElementById('sdConfirmBtn').disabled = true;
+
+  // Small delay so the UI updates visibly
+  await new Promise(r => setTimeout(r, 80));
+
+  try {
+    // Build the workbook bytes first
+    const wbBytes = pendingExportFn ? pendingExportFn(name + '.xlsx', true) : null;
+    if(!wbBytes) { closeSaveDialog(); return; }
+
+    // Try native "Save As" dialog (Chrome 86+, Edge 86+)
+    if(window.showSaveFilePicker) {
+      try {
+        const fh = await window.showSaveFilePicker({
+          suggestedName: name + '.xlsx',
+          types: [{
+            description: 'Fichier Excel',
+            accept: {'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx']}
+          }]
+        });
+        const writable = await fh.createWritable();
+        await writable.write(wbBytes);
+        await writable.close();
+        closeSaveDialog();
+        return;
+      } catch(err) {
+        // User cancelled the dialog — stop here
+        if(err.name === 'AbortError') {
+          document.getElementById('sdConfirmText').textContent = 'Télécharger';
+          document.getElementById('dlSpinner').style.display = 'none';
+          document.getElementById('sdConfirmBtn').disabled = false;
+          return;
+        }
+        // Other error — fall through to classic download
+      }
+    }
+
+    // Fallback: classic download (Firefox / Safari / older browsers)
+    const blob = new Blob([wbBytes], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url; a.download = name + '.xlsx';
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    closeSaveDialog();
+
+  } catch(e) {
+    console.error(e);
+    closeSaveDialog();
+  }
+}
+
+// ════════════════════════════════════════
+// EXCEL EXPORT
+// ════════════════════════════════════════
+
+function exportAllExcel() {
+  const date = new Date().toISOString().split('T')[0];
+  const totalMembres = companies.reduce((a,c)=>a+c.conducteurs.reduce((b,k)=>b+(k.teams||[]).reduce((d,t)=>d+(t.membres||[]).length,0),0),0);
+  const totalCond = companies.reduce((a,c)=>a+c.conducteurs.length,0);
+  const alertCount = companies.filter(c=>{const st=contractStatus(c.dateExp);return st.type==='expiring'||st.type==='expired';}).length;
+
+  openSaveDialog(
+    'Exporter tout l\'annuaire',
+    `BTP_Annuaire_${date}`,
+    [
+      {icon:'🏢', name:'Sociétés & Contrats', count: companies.length+' sociétés'},
+      {icon:'👷', name:'Conducteurs', count: totalCond+' conducteurs'},
+      {icon:'👥', name:'Équipes & Membres', count: totalMembres+' membres'},
+      {icon:'⚠️', name:'Alertes Contrats', count: alertCount+' alertes'},
+    ],
+    (filename) => doExportAll(filename, true)
+  );
+}
+
+function exportConducteurExcel() {
+  if(!currentCondRef) return;
+  const c = companies.find(x=>x.id===currentCondRef.companyId);
+  const cond = c.conducteurs[currentCondRef.condIndex];
+  const date = new Date().toISOString().split('T')[0];
+  const safeName = cond.nom.replace(/[^a-zA-Z0-9\s\-_]/g,'').trim().replace(/\s+/g,'_').slice(0,30);
+  const teams = cond.teams||[];
+  const totalMembres = teams.reduce((a,t)=>a+(t.membres||[]).length,0);
+
+  const sheets = [{icon:'📋', name:'Fiche Conducteur', count:'infos générales'}];
+  teams.forEach(t => sheets.push({icon:'👥', name:t.nom, count:(t.membres||[]).length+' membre(s)'}));
+
+  openSaveDialog(
+    `Fiche : ${cond.nom}`,
+    `Conducteur_${safeName}_${date}`,
+    sheets,
+    (filename) => doExportConducteur(filename, true)
+  );
+}
+
+function doExportAll(filename, returnBytes) {
+  const wb = XLSX.utils.book_new();
+
+  // Sheet 1: Sociétés & Contrats
+  const societeRows = [['Société','Secteur','Adresse','Ville','Téléphone','E-mail','DC','Ville des Travaux','N° Contrat','Objet du Contrat','Date Notification','Durée','Date Expiration','Statut Contrat','Nb Conducteurs']];
+  companies.forEach(c => {
+    const st = contractStatus(c.dateExp);
+    const statut = st.type==='expired'?'Expiré':st.type==='expiring'?'Expire bientôt':st.type==='ok'?'Valide':'—';
+    societeRows.push([c.nom,c.secteur||'',c.adresse,c.ville||'',c.tel||'',c.email||'',c.dc||'',c.villeTravaux||'',c.contratNum||'',c.objet||'',c.dateNotif||'',c.duree||'',c.dateExp||'',statut,c.conducteurs.length]);
+  });
+  const ws1 = XLSX.utils.aoa_to_sheet(societeRows);
+  ws1['!cols']=[20,18,28,14,16,24,18,16,16,40,14,12,14,14,10].map(w=>({wch:w}));
+  styleHeader(ws1, societeRows[0].length);
+  XLSX.utils.book_append_sheet(wb, ws1, 'Sociétés & Contrats');
+
+  // Sheet 2: Conducteurs
+  const condRows = [['Société','DC','Ville des Travaux','Conducteur','Téléphone','Rôle','Nb Équipes','Nb Membres Total']];
+  companies.forEach(c => {
+    c.conducteurs.forEach(k => {
+      condRows.push([c.nom,c.dc||'',c.villeTravaux||'',k.nom,k.tel||'',k.role||'',(k.teams||[]).length,(k.teams||[]).reduce((a,t)=>a+(t.membres||[]).length,0)]);
+    });
+  });
+  const ws2 = XLSX.utils.aoa_to_sheet(condRows);
+  ws2['!cols']=[22,18,16,24,16,18,10,12].map(w=>({wch:w}));
+  styleHeader(ws2, condRows[0].length);
+  XLSX.utils.book_append_sheet(wb, ws2, 'Conducteurs');
+
+  // Sheet 3: Équipes & Membres
+  const membresRows = [['Société','Conducteur','Équipe','Nom & Prénom','N° CIN','Téléphone','Qualité','Type Véhicule','N° Immatriculation','Lien GPS']];
+  companies.forEach(c => {
+    c.conducteurs.forEach(k => {
+      (k.teams||[]).forEach(team => {
+        if(!(team.membres||[]).length) {
+          membresRows.push([c.nom,k.nom,team.nom,'—','—','—','—','—','—','—']);
+        } else {
+          team.membres.forEach(m => {
+            const q=m.qualite==='raccordeur'?'Raccordeur':m.qualite==='cableur'?'Câbleur (Ouvrier)':'Autre';
+            membresRows.push([c.nom,k.nom,team.nom,m.nom+(m.prenom?' '+m.prenom:''),m.cin||'',m.tel||'',q,m.typeVehicule||'',m.immat||'',m.gps||'']);
+          });
+        }
+      });
+    });
+  });
+  const ws3 = XLSX.utils.aoa_to_sheet(membresRows);
+  ws3['!cols']=[22,22,14,22,12,14,16,18,16,36].map(w=>({wch:w}));
+  styleHeader(ws3, membresRows[0].length);
+  XLSX.utils.book_append_sheet(wb, ws3, 'Équipes & Membres');
+
+  // Sheet 4: Alertes
+  const alertRows = [['Société','N° Contrat','Objet','Date Expiration','Jours Restants','Statut']];
+  companies.filter(c=>c.dateExp).sort((a,b)=>(daysUntil(a.dateExp)||9999)-(daysUntil(b.dateExp)||9999)).forEach(c => {
+    const days=daysUntil(c.dateExp);
+    const statut=days===null?'—':days<0?'EXPIRÉ':days<=60?'URGENT':'Valide';
+    alertRows.push([c.nom,c.contratNum||'—',c.objet||'—',c.dateExp||'—',days===null?'—':days,statut]);
+  });
+  const ws4 = XLSX.utils.aoa_to_sheet(alertRows);
+  ws4['!cols']=[24,16,38,14,14,14].map(w=>({wch:w}));
+  styleHeader(ws4, alertRows[0].length);
+  XLSX.utils.book_append_sheet(wb, ws4, 'Alertes Contrats');
+
+  if(returnBytes) return XLSX.write(wb, {bookType:'xlsx', type:'array'});
+  XLSX.writeFile(wb, filename);
+}
+
+function doExportConducteur(filename, returnBytes) {
+  if(!currentCondRef) return null;
+  const c = companies.find(x=>x.id===currentCondRef.companyId);
+  const cond = c.conducteurs[currentCondRef.condIndex];
+  const wb = XLSX.utils.book_new();
+
+  const infoRows = [
+    ['Champ','Valeur'],
+    ['Conducteur',cond.nom],['Société',c.nom],['Rôle',cond.role||'—'],
+    ['Téléphone',cond.tel||'—'],['DC',c.dc||'—'],['Ville des Travaux',c.villeTravaux||'—'],
+    ['N° Contrat',c.contratNum||'—'],['Objet du Contrat',c.objet||'—'],
+    ['Date Expiration',c.dateExp||'—'],
+    ['Nb Équipes',(cond.teams||[]).length],
+    ['Nb Membres Total',(cond.teams||[]).reduce((a,t)=>a+(t.membres||[]).length,0)]
+  ];
+  const wsInfo = XLSX.utils.aoa_to_sheet(infoRows);
+  wsInfo['!cols']=[{wch:22},{wch:40}];
+  styleHeader(wsInfo, 2);
+  XLSX.utils.book_append_sheet(wb, wsInfo, 'Fiche Conducteur');
+
+  (cond.teams||[]).forEach((team,ti) => {
+    const rows=[['Équipe',team.nom],[''],['Nom & Prénom','N° CIN','Téléphone','Qualité','Type Véhicule','N° Immatriculation','Lien GPS']];
+    if(!(team.membres||[]).length){
+      rows.push(['(Aucun membre)','','','','','','']);
+    } else {
+      team.membres.forEach(m=>{
+        const q=m.qualite==='raccordeur'?'Raccordeur':m.qualite==='cableur'?'Câbleur (Ouvrier)':'Autre';
+        rows.push([m.nom+(m.prenom?' '+m.prenom:''),m.cin||'',m.tel||'',q,m.typeVehicule||'',m.immat||'',m.gps||'']);
+      });
+    }
+    const ws=XLSX.utils.aoa_to_sheet(rows);
+    ws['!cols']=[22,12,14,16,18,16,36].map(w=>({wch:w}));
+    const sheetName=(team.nom||('Equipe '+(ti+1))).slice(0,31);
+    XLSX.utils.book_append_sheet(wb, ws, sheetName);
+  });
+
+  if(returnBytes) return XLSX.write(wb, {bookType:'xlsx', type:'array'});
+  XLSX.writeFile(wb, filename);
+}
+
+function styleHeader(ws, ncols) {
+  if(!ws['!ref']) return;
+  for(let C=0;C<ncols;C++){
+    const addr=XLSX.utils.encode_cell({r:0,c:C});
+    if(ws[addr]) ws[addr].s={font:{bold:true,color:{rgb:'C9A84C'}},fill:{fgColor:{rgb:'0D0F14'}}};
+  }
+}
+
+// ── Init ──
+render(); // Affichage immédiat
+
+// Afficher le modal "connexion en cours" tout de suite
+(function(){
+  const overlay = document.getElementById('startupModalOverlay');
+  const time    = document.getElementById('smTime');
+  if(overlay) overlay.classList.add('show');
+  if(time) time.textContent = 'Ouverture à ' + new Date().toLocaleTimeString('fr-FR');
+})();
+
+// Charger Firebase puis initialiser
+window.addEventListener('load', async () => {
+  const ok = await loadFirebaseSDK();
+  if(ok){
+    setTimeout(() => initFirebase(), 200);
+  } else {
+    showStartupMessage(false,
+      '❌ Firebase indisponible',
+      'Aucun CDN Firebase n\'a pu être chargé. Mode local activé. Vérifiez votre connexion internet.');
+    fallbackLocal();
+  }
+});
+</script>
+</body>
+</html>
