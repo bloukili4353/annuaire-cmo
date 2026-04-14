@@ -403,11 +403,202 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
 /* ── MODAL ÉDITION MEMBRE ── */
 #editMemberModalOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);z-index:2500;align-items:center;justify-content:center;padding:16px;}
 #editMemberModalOverlay.open{display:flex;}
+
+/* ════════════════════════════════════════
+   PAGE LOGIN / INSCRIPTION
+════════════════════════════════════════ */
+#page-auth{
+  display:none;position:fixed;inset:0;z-index:99000;
+  background:linear-gradient(160deg,#7A0012 0%,#A8001A 35%,#E2001A 70%,#C0001A 100%);
+  align-items:center;justify-content:center;padding:20px;
+}
+#page-auth.active{display:flex;}
+
+.auth-box{
+  width:100%;max-width:420px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:22px;overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,0.5);
+  animation:scaleIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.auth-header{
+  padding:28px 28px 20px;
+  background:rgba(0,0,0,0.18);
+  border-bottom:1px solid rgba(255,255,255,0.12);
+  text-align:center;
+}
+.auth-logo{
+  width:56px;height:56px;border-radius:14px;
+  background:rgba(255,255,255,0.95);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+.auth-logo svg{width:26px;height:26px;fill:var(--mt-red);}
+.auth-app-name{
+  font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(255,255,255,0.55);margin-bottom:5px;
+}
+.auth-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:700;color:#fff;
+}
+
+.auth-tabs{
+  display:flex;border-bottom:1px solid rgba(255,255,255,0.12);
+}
+.auth-tab{
+  flex:1;padding:12px;text-align:center;
+  font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;
+  color:rgba(255,255,255,0.5);cursor:pointer;
+  border-bottom:2px solid transparent;transition:all 0.2s;
+  background:none;border-top:none;border-left:none;border-right:none;
+}
+.auth-tab.active{color:#fff;border-bottom-color:#FFD700;}
+.auth-tab:hover{color:rgba(255,255,255,0.85);}
+
+.auth-panel{display:none;padding:24px 28px 28px;}
+.auth-panel.active{display:block;}
+
+.auth-form-group{margin-bottom:14px;}
+.auth-form-group label{
+  display:block;font-size:0.7rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:rgba(255,255,255,0.6);
+  font-weight:600;margin-bottom:6px;
+}
+.auth-input{
+  width:100%;background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.22);border-radius:10px;
+  padding:11px 14px;color:#fff;
+  font-family:'DM Sans',sans-serif;font-size:0.9rem;
+  outline:none;transition:border-color 0.2s;
+}
+.auth-input::placeholder{color:rgba(255,255,255,0.35);}
+.auth-input:focus{border-color:rgba(255,255,255,0.65);background:rgba(255,255,255,0.15);}
+
+.auth-btn{
+  width:100%;padding:12px;border:none;border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.95rem;
+  cursor:pointer;transition:all 0.2s;margin-top:6px;
+  background:rgba(255,255,255,0.95);color:var(--mt-red);
+}
+.auth-btn:hover{background:#fff;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,0.25);}
+.auth-btn:active{transform:scale(0.98);}
+
+.auth-error{
+  display:none;background:rgba(255,80,80,0.15);
+  border:1px solid rgba(255,80,80,0.4);border-radius:8px;
+  padding:9px 13px;font-size:0.82rem;color:#FF8080;
+  margin-bottom:12px;animation:shake 0.4s ease;
+}
+.auth-error.show{display:block;}
+.auth-success{
+  display:none;background:rgba(74,222,128,0.12);
+  border:1px solid rgba(74,222,128,0.35);border-radius:8px;
+  padding:9px 13px;font-size:0.82rem;color:#4ADE80;
+  margin-bottom:12px;
+}
+.auth-success.show{display:block;}
+
+.auth-footer-note{
+  text-align:center;font-size:0.75rem;
+  color:rgba(255,255,255,0.4);margin-top:14px;
+}
+.auth-divider{
+  display:flex;align-items:center;gap:10px;margin:14px 0;
+}
+.auth-divider span{font-size:0.7rem;color:rgba(255,255,255,0.4);}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.15);}
+
+/* Badge utilisateur connecté dans le header */
+.user-badge{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  border-radius:20px;padding:5px 12px 5px 7px;
+  font-size:0.78rem;color:rgba(255,255,255,0.85);
+}
+.user-avatar-mini{
+  width:24px;height:24px;border-radius:50%;
+  background:rgba(255,215,0,0.2);border:1px solid rgba(255,215,0,0.4);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.65rem;font-weight:700;color:#FFD700;flex-shrink:0;
+}
+.btn-logout{
+  background:rgba(255,80,80,0.12);border:1px solid rgba(255,80,80,0.3);
+  border-radius:6px;padding:3px 9px;color:#FF8080;
+  font-family:'DM Sans',sans-serif;font-size:0.72rem;
+  cursor:pointer;transition:all 0.2s;margin-left:6px;
+}
+.btn-logout:hover{background:rgba(255,80,80,0.25);color:#FF6B6B;}
 </style>
 </head>
 <body>
 
-<div id="page-main" class="page active">
+<!-- ═══════════════════════════════════════════
+     PAGE AUTH — LOGIN / INSCRIPTION
+══════════════════════════════════════════════ -->
+<div id="page-auth" class="active">
+  <div class="auth-box">
+
+    <div class="auth-header">
+      <div class="auth-logo">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="auth-app-name">CMO Settat</div>
+      <div class="auth-title">Annuaire des Prestataires</div>
+    </div>
+
+    <!-- Onglets -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchAuthTab('login')">Connexion</button>
+      <button class="auth-tab" onclick="switchAuthTab('register')">Inscription</button>
+    </div>
+
+    <!-- PANEL LOGIN -->
+    <div class="auth-panel active" id="panel-login">
+      <div class="auth-error" id="login-error"></div>
+      <div class="auth-form-group">
+        <label>Adresse e-mail</label>
+        <input class="auth-input" id="login-email" type="email" placeholder="votre@email.com" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <div class="auth-form-group">
+        <label>Mot de passe</label>
+        <input class="auth-input" id="login-password" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <button class="auth-btn" onclick="doLogin()">Se connecter</button>
+      <div class="auth-footer-note" style="margin-top:16px">Pas encore de compte ? Cliquez sur <strong style="color:rgba(255,255,255,0.7)">Inscription</strong></div>
+    </div>
+
+    <!-- PANEL INSCRIPTION -->
+    <div class="auth-panel" id="panel-register">
+      <div class="auth-error"   id="register-error"></div>
+      <div class="auth-success" id="register-success"></div>
+      <div class="auth-form-group">
+        <label>Code d'invitation *</label>
+        <input class="auth-input" id="reg-code" type="text" placeholder="Code fourni par l'administrateur">
+      </div>
+      <div class="auth-divider"><span>Informations du compte</span></div>
+      <div class="auth-form-group">
+        <label>Adresse e-mail *</label>
+        <input class="auth-input" id="reg-email" type="email" placeholder="votre@email.com">
+      </div>
+      <div class="auth-form-group">
+        <label>Mot de passe * <span style="color:rgba(255,255,255,0.4);font-size:0.65rem;font-weight:400">(min. 6 caractères)</span></label>
+        <input class="auth-input" id="reg-password" type="password" placeholder="••••••••">
+      </div>
+      <div class="auth-form-group">
+        <label>Confirmer le mot de passe *</label>
+        <input class="auth-input" id="reg-password2" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doRegister()">
+      </div>
+      <button class="auth-btn" onclick="doRegister()">Créer mon compte</button>
+      <div class="auth-footer-note" style="margin-top:16px">Déjà un compte ? Cliquez sur <strong style="color:rgba(255,255,255,0.7)">Connexion</strong></div>
+    </div>
+
+  </div>
+</div>
+
+<div id="page-main" class="page">
   <div id="alertBanner">
     <div class="alert-inner">
       <div class="alert-icon">
@@ -443,6 +634,13 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
         <div class="stat"><span class="stat-num" id="stat-societes">0</span><span class="stat-label">Sociétés</span></div>
         <div class="stat"><span class="stat-num" id="stat-conducteurs">0</span><span class="stat-label">Conducteurs</span></div>
         <div class="stat"><span class="stat-num warn" id="stat-alerts">0</span><span class="stat-label">⚠ Alertes</span></div>
+        <div class="stat" style="justify-content:flex-end">
+          <div class="user-badge" id="userBadge" style="display:none">
+            <div class="user-avatar-mini" id="userAvatarMini">?</div>
+            <span id="userEmailDisplay">—</span>
+            <button class="btn-logout" onclick="doLogout()">Déconnexion</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="header-actions">
@@ -1820,11 +2018,206 @@ function styleHeader(ws,ncols){
 }
 
 // ════════════════════════════════════════
+// AUTHENTIFICATION — LOGIN / INSCRIPTION
+// ════════════════════════════════════════
+
+// ⚙️ CONFIGURATION — modifiez ces valeurs selon vos besoins
+const AUTH_CONFIG = {
+  adminEmail:     'admin@cmo-settat.ma',   // ← Email du compte admin
+  adminPassword:  'CMO@Settat2025!',       // ← Mot de passe admin
+  inviteCode:     'CMO2025',               // ← Code d'invitation pour s'inscrire
+};
+
+// Stockage des comptes (localStorage)
+const ACCOUNTS_KEY = 'cmo_accounts';
+const SESSION_KEY  = 'cmo_session';
+
+function getAccounts() {
+  try {
+    const d = localStorage.getItem(ACCOUNTS_KEY);
+    return d ? JSON.parse(d) : {};
+  } catch(e) { return {}; }
+}
+function saveAccounts(accounts) {
+  try { localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(accounts)); } catch(e){}
+}
+function getSession() {
+  try {
+    const d = localStorage.getItem(SESSION_KEY);
+    return d ? JSON.parse(d) : null;
+  } catch(e) { return null; }
+}
+function saveSession(email) {
+  try { localStorage.setItem(SESSION_KEY, JSON.stringify({email, ts: Date.now()})); } catch(e){}
+}
+function clearSession() {
+  try { localStorage.removeItem(SESSION_KEY); } catch(e){}
+}
+
+// Initialise le compte admin s'il n'existe pas encore
+function initAdminAccount() {
+  const accounts = getAccounts();
+  if(!accounts[AUTH_CONFIG.adminEmail]) {
+    accounts[AUTH_CONFIG.adminEmail] = {
+      password: AUTH_CONFIG.adminPassword,
+      role: 'admin',
+      createdAt: Date.now()
+    };
+    saveAccounts(accounts);
+  }
+}
+
+// Onglets Login / Inscription
+function switchAuthTab(tab) {
+  document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.auth-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`.auth-tab:${tab==='login'?'first-child':'last-child'}`).classList.add('active');
+  document.getElementById('panel-'+tab).classList.add('active');
+  // Vider les erreurs
+  document.querySelectorAll('.auth-error,.auth-success').forEach(el=>el.classList.remove('show'));
+}
+
+function showAuthError(panelId, msg) {
+  const el = document.getElementById(panelId);
+  if(el){ el.textContent = msg; el.classList.add('show'); }
+}
+function hideAuthError(panelId) {
+  const el = document.getElementById(panelId);
+  if(el) el.classList.remove('show');
+}
+
+// LOGIN
+function doLogin() {
+  const email    = document.getElementById('login-email').value.trim().toLowerCase();
+  const password = document.getElementById('login-password').value;
+  hideAuthError('login-error');
+
+  if(!email || !password) {
+    showAuthError('login-error', '⚠️ Veuillez remplir tous les champs.');
+    return;
+  }
+
+  const accounts = getAccounts();
+  const account  = accounts[email];
+
+  if(!account || account.password !== password) {
+    showAuthError('login-error', '❌ Email ou mot de passe incorrect.');
+    return;
+  }
+
+  saveSession(email);
+  enterApp(email);
+}
+
+// INSCRIPTION
+function doRegister() {
+  const code  = document.getElementById('reg-code').value.trim();
+  const email = document.getElementById('reg-email').value.trim().toLowerCase();
+  const pwd   = document.getElementById('reg-password').value;
+  const pwd2  = document.getElementById('reg-password2').value;
+
+  hideAuthError('register-error');
+  document.getElementById('register-success').classList.remove('show');
+
+  if(!code || !email || !pwd || !pwd2) {
+    showAuthError('register-error', '⚠️ Veuillez remplir tous les champs.');
+    return;
+  }
+  if(code !== AUTH_CONFIG.inviteCode) {
+    showAuthError('register-error', '❌ Code d\'invitation invalide.');
+    return;
+  }
+  if(!email.includes('@')) {
+    showAuthError('register-error', '❌ Adresse e-mail invalide.');
+    return;
+  }
+  if(pwd.length < 6) {
+    showAuthError('register-error', '❌ Le mot de passe doit contenir au moins 6 caractères.');
+    return;
+  }
+  if(pwd !== pwd2) {
+    showAuthError('register-error', '❌ Les mots de passe ne correspondent pas.');
+    return;
+  }
+
+  const accounts = getAccounts();
+  if(accounts[email]) {
+    showAuthError('register-error', '❌ Ce compte existe déjà.');
+    return;
+  }
+
+  accounts[email] = { password: pwd, role: 'user', createdAt: Date.now() };
+  saveAccounts(accounts);
+
+  const s = document.getElementById('register-success');
+  s.textContent = '✅ Compte créé ! Vous pouvez maintenant vous connecter.';
+  s.classList.add('show');
+
+  // Pré-remplir le login et basculer sur l'onglet connexion
+  setTimeout(() => {
+    document.getElementById('login-email').value = email;
+    document.getElementById('login-password').value = '';
+    switchAuthTab('login');
+  }, 1800);
+}
+
+// DÉCONNEXION
+function doLogout() {
+  if(!confirm('Se déconnecter ?')) return;
+  clearSession();
+  // Masquer l'annuaire, afficher login
+  document.getElementById('page-auth').classList.add('active');
+  document.getElementById('page-main').classList.remove('active');
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('userBadge').style.display = 'none';
+  // Vider les champs
+  document.getElementById('login-email').value = '';
+  document.getElementById('login-password').value = '';
+  hideAuthError('login-error');
+}
+
+// ENTRÉE DANS L'APP après login réussi
+function enterApp(email) {
+  // Masquer login, afficher annuaire
+  document.getElementById('page-auth').classList.remove('active');
+  document.getElementById('page-main').classList.add('active');
+
+  // Badge utilisateur
+  const badge   = document.getElementById('userBadge');
+  const avatar  = document.getElementById('userAvatarMini');
+  const display = document.getElementById('userEmailDisplay');
+  if(badge){
+    badge.style.display = 'flex';
+    avatar.textContent  = email[0].toUpperCase();
+    display.textContent = email;
+  }
+}
+
+// Vérification session au démarrage
+function checkSession() {
+  initAdminAccount();
+  const session = getSession();
+  if(session && session.email) {
+    // Session valide — entrer directement
+    enterApp(session.email);
+    return true;
+  }
+  // Pas de session — afficher login
+  document.getElementById('page-auth').classList.add('active');
+  return false;
+}
+
+// ════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════
 render();
 
+// Vérifier la session avant tout
+const _hasSession = checkSession();
+
 (function(){
+  // N'afficher le modal Firebase que si on est connecté
+  if(!_hasSession) return;
   const overlay=document.getElementById('startupModalOverlay');
   const time=document.getElementById('smTime');
   if(overlay)overlay.classList.add('show');
