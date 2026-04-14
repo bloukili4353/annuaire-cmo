@@ -923,7 +923,16 @@ const DC_VILLES = {
   'DC El Jadida':   ['El Jadida','Sidi Bennour'],
   'DC Settat':      ['Settat','Ben Slimane','Berrechid']
 };
-const palettes=[['#C9A84C','#0D0F14'],['#4A7CFF','#0D0F14'],['#E05252','#0D0F14'],['#4CAF50','#0D0F14'],['#9C5FF5','#0D0F14'],['#FF8C42','#0D0F14'],['#00BCD4','#0D0F14'],['#E91E8C','#0D0F14']];
+const palettes=[
+  ['#C9A84C','rgba(201,168,76,0.13)','rgba(201,168,76,0.35)'],
+  ['#4A7CFF','rgba(74,124,255,0.13)','rgba(74,124,255,0.35)'],
+  ['#4CAF50','rgba(76,175,80,0.13)','rgba(76,175,80,0.35)'],
+  ['#9C5FF5','rgba(156,95,245,0.13)','rgba(156,95,245,0.35)'],
+  ['#FF8C42','rgba(255,140,66,0.13)','rgba(255,140,66,0.35)'],
+  ['#00BCD4','rgba(0,188,212,0.13)','rgba(0,188,212,0.35)'],
+  ['#E91E8C','rgba(233,30,140,0.13)','rgba(233,30,140,0.35)'],
+  ['#E05252','rgba(224,82,82,0.13)','rgba(224,82,82,0.35)'],
+];
 const memberColors=['#4A7CFF','#E05252','#4CAF50','#C9A84C','#9C5FF5','#FF8C42','#00BCD4','#E91E8C'];
  
 const TODAY=new Date(); TODAY.setHours(0,0,0,0);
@@ -1298,7 +1307,7 @@ function render(){
         </div>`;}).join('')
       :`<div style="color:var(--muted);font-size:0.82rem;text-align:center;padding:8px 0">Aucun conducteur enregistré</div>`;
  
-    return`<div class="card ${st.cls}" style="animation-delay:${i*0.07}s">
+    return`<div class="card ${st.cls}" style="animation-delay:${i*0.07}s;background:${pal[1]};border-color:${pal[2]};">
       <div class="card-header">
         <div class="company-avatar" style="background:${pal[0]}20;border-color:${pal[0]}40;color:${pal[0]}">${ini}</div>
         <div class="company-meta">
@@ -1833,3 +1842,4 @@ window.addEventListener('load', async()=>{
 </script>
 </body>
 </html>
+ 
