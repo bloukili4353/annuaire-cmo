@@ -395,6 +395,14 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
 .sm-footer{padding:16px 24px;border-top:1px solid rgba(255,255,255,0.12);display:flex;justify-content:center;}
 #smBtn{width:100%;border:none;border-radius:10px;padding:12px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.2s;}
 #smBtn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,0.25);}
+
+/* ── BOUTON ÉDITION MEMBRE ── */
+.btn-edit-member{width:22px;height:22px;border-radius:5px;background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);color:#FFD700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;margin-right:4px;}
+.btn-edit-member:hover{background:#FFD700;color:#7A0012;}
+
+/* ── MODAL ÉDITION MEMBRE ── */
+#editMemberModalOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);z-index:2500;align-items:center;justify-content:center;padding:16px;}
+#editMemberModalOverlay.open{display:flex;}
 </style>
 </head>
 <body>
@@ -771,6 +779,46 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
       <button class="btn-save" onclick="confirmRenameAndSync()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="margin-right:4px"><polyline points="20 6 9 17 4 12"/></svg>
         Appliquer
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ÉDITION MEMBRE -->
+<div id="editMemberModalOverlay" onclick="if(event.target===this)closeEditMemberModal()">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3>✏️ Modifier le membre</h3>
+      <button class="modal-close" onclick="closeEditMemberModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="sep sep-b"><div class="sl"></div><span>Informations du membre</span><div class="sl"></div></div>
+      <div class="form-group"><label>Nom & Prénom *</label><input type="text" id="em-nom" placeholder="Nom Prénom"></div>
+      <div class="form-row">
+        <div class="form-group"><label>N° CIN</label><input type="text" id="em-cin" placeholder="BE123456"></div>
+        <div class="form-group"><label>Téléphone</label><input type="tel" id="em-tel" placeholder="+212 6XX XXX XXX"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Qualité</label>
+          <select id="em-qualite">
+            <option value="raccordeur">🔌 Raccordeur</option>
+            <option value="cableur">🔧 Câbleur (Ouvrier)</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Type de Véhicule</label><input type="text" id="em-typeVehicule" placeholder="Ex: Camionnette"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>N° Immatriculation</label><input type="text" id="em-immat" placeholder="12345-A-6" style="font-family:monospace"></div>
+        <div class="form-group"><label>Lien GPS</label><input type="url" id="em-gps" placeholder="https://maps.google.com/..."></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeEditMemberModal()">Annuler</button>
+      <button class="btn-save" onclick="confirmEditMember()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="margin-right:4px"><polyline points="20 6 9 17 4 12"/></svg>
+        Enregistrer
       </button>
     </div>
   </div>
@@ -1349,7 +1397,10 @@ function renderTeams(){
               <td><span class="vehicle-type">${m.typeVehicule||'—'}</span></td>
               <td>${m.immat?`<span class="vehicle-badge">🚗 ${m.immat}</span>`:'—'}</td>
               <td>${m.gps?`<a href="${m.gps}" target="_blank" class="gps-btn"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>📡 GPS</a>`:'—'}</td>
-              <td><button class="btn-del-member" onclick="deleteMember(${ti},${mi})" title="Supprimer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></td>
+              <td style="display:flex;gap:4px;align-items:center;padding-top:9px">
+                <button class="btn-edit-member" onclick="openEditMemberModal(${ti},${mi})" title="Modifier"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                <button class="btn-del-member" onclick="deleteMember(${ti},${mi})" title="Supprimer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+              </td>
             </tr>`;}).join('')}</tbody>
         </table>`
       :`<div class="empty-team">Aucun membre — <button class="btn-add-member" style="display:inline-flex;width:auto;margin-top:0" onclick="openMemberModal(${ti})">+ Ajouter</button></div>`;
@@ -1422,6 +1473,56 @@ function deleteMember(ti,mi){
   const c=companies.find(x=>x.id===currentCondRef.companyId);
   c.conducteurs[currentCondRef.condIndex].teams[ti].membres.splice(mi,1);
   saveData();renderTeams();
+}
+
+// ════════════════════════════════════════
+// ÉDITION MEMBRE — bouton ✏️
+// ════════════════════════════════════════
+let _editMemberRef = null; // {ti, mi}
+
+function openEditMemberModal(ti, mi) {
+  const c    = companies.find(x=>x.id===currentCondRef.companyId);
+  const team = c.conducteurs[currentCondRef.condIndex].teams[ti];
+  const m    = team.membres[mi];
+  _editMemberRef = {ti, mi};
+
+  document.getElementById('em-nom').value         = m.nom || '';
+  document.getElementById('em-cin').value         = m.cin || '';
+  document.getElementById('em-tel').value         = m.tel || '';
+  document.getElementById('em-qualite').value     = m.qualite || 'raccordeur';
+  document.getElementById('em-typeVehicule').value= m.typeVehicule || '';
+  document.getElementById('em-immat').value       = m.immat || '';
+  document.getElementById('em-gps').value         = m.gps || '';
+
+  document.getElementById('editMemberModalOverlay').classList.add('open');
+  setTimeout(()=>{ const i=document.getElementById('em-nom'); i.focus(); i.select(); }, 120);
+}
+
+function closeEditMemberModal() {
+  document.getElementById('editMemberModalOverlay').classList.remove('open');
+  _editMemberRef = null;
+}
+
+function confirmEditMember() {
+  const nom = document.getElementById('em-nom').value.trim();
+  if(!nom){ document.getElementById('em-nom').focus(); return; }
+  if(!_editMemberRef) return;
+
+  const c    = companies.find(x=>x.id===currentCondRef.companyId);
+  const team = c.conducteurs[currentCondRef.condIndex].teams[_editMemberRef.ti];
+  const m    = team.membres[_editMemberRef.mi];
+
+  m.nom         = nom;
+  m.cin         = document.getElementById('em-cin').value.trim();
+  m.tel         = document.getElementById('em-tel').value.trim();
+  m.qualite     = document.getElementById('em-qualite').value;
+  m.typeVehicule= document.getElementById('em-typeVehicule').value.trim();
+  m.immat       = document.getElementById('em-immat').value.trim();
+  m.gps         = document.getElementById('em-gps').value.trim();
+
+  closeEditMemberModal();
+  saveData();
+  renderTeams();
 }
 
 // ════════════════════════════════════════
