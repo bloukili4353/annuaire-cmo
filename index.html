@@ -118,7 +118,7 @@ main{position:relative;padding:30px 5vw 80px;z-index:1;}
 .count{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:2px 10px;font-size:0.78rem;color:#fff;font-weight:600;}
 .line{flex:1;height:1px;background:rgba(255,255,255,0.2);}
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(460px,1fr));gap:18px;}
-.card{background:rgba(255,255,255,0.10);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.18);border-radius:16px;overflow:hidden;transition:all 0.3s;animation:fadeUp 0.5s ease both;}
+.card{backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.18);border-radius:16px;overflow:hidden;transition:all 0.3s;animation:fadeUp 0.5s ease both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .card:hover{border-color:rgba(255,255,255,0.45);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.3);}
 .card.card-expiring{border-color:rgba(255,180,0,0.5);}
@@ -395,18 +395,18 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
 .sm-footer{padding:16px 24px;border-top:1px solid rgba(255,255,255,0.12);display:flex;justify-content:center;}
 #smBtn{width:100%;border:none;border-radius:10px;padding:12px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.2s;}
 #smBtn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,0.25);}
- 
+
 /* ── BOUTON ÉDITION MEMBRE ── */
 .btn-edit-member{width:22px;height:22px;border-radius:5px;background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);color:#FFD700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;margin-right:4px;}
 .btn-edit-member:hover{background:#FFD700;color:#7A0012;}
- 
+
 /* ── MODAL ÉDITION MEMBRE ── */
 #editMemberModalOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);z-index:2500;align-items:center;justify-content:center;padding:16px;}
 #editMemberModalOverlay.open{display:flex;}
 </style>
 </head>
 <body>
- 
+
 <div id="page-main" class="page active">
   <div id="alertBanner">
     <div class="alert-inner">
@@ -420,7 +420,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
       <button class="alert-dismiss" onclick="document.getElementById('alertBanner').classList.remove('show')">✕</button>
     </div>
   </div>
- 
+
   <header>
     <div class="header-bg"></div>
     <div class="top-bar">
@@ -456,7 +456,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
       </button>
     </div>
   </header>
- 
+
   <div class="controls-bar">
     <div class="search-wrap">
       <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -469,7 +469,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
     </button>
     <button class="filter-btn" onclick="setFilter('valid',this)">Valides</button>
   </div>
- 
+
   <main>
     <div class="section-label">
       <h2>Répertoire</h2>
@@ -482,7 +482,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
       <h3>Aucun résultat</h3><p>Aucune société ne correspond à votre recherche.</p>
     </div>
   </main>
- 
+
   <footer>
     <span>© 2025 <span id="footerTitle">Annuaire des prestataires travaillant pour le compte du CMO Settat</span></span>
     <div style="display:flex;align-items:center;gap:16px;">
@@ -491,7 +491,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
     </div>
   </footer>
 </div>
- 
+
 <div id="page-conducteur" class="page detail-page">
   <div class="detail-header">
     <div class="detail-breadcrumb">
@@ -542,7 +542,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
     </div>
   </div>
 </div>
- 
+
 <!-- MODAL SOCIÉTÉ -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOutside(event)">
   <div class="modal">
@@ -620,7 +620,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
     </div>
   </div>
 </div>
- 
+
 <!-- MODAL ÉQUIPE -->
 <div class="modal-overlay" id="teamModalOverlay" onclick="closeTeamModalOnOutside(event)">
   <div class="modal modal-sm">
@@ -640,7 +640,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
     </div>
   </div>
 </div>
- 
+
 <!-- MODAL MEMBRE -->
 <div class="modal-overlay" id="memberModalOverlay" onclick="closeMemberModalOnOutside(event)">
   <div class="modal modal-lg">
@@ -662,7 +662,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
     </div>
   </div>
 </div>
- 
+
 <!-- SAVE DIALOG -->
 <div class="save-dialog-overlay" id="saveDialogOverlay" onclick="closeSaveDialogOnOutside(event)">
   <div class="save-dialog">
@@ -708,7 +708,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
     </div>
   </div>
 </div>
- 
+
 <!-- MODAL RENOMMER CONDUCTEUR -->
 <div class="rename-modal-overlay" id="renameCondOverlay" onclick="if(event.target===this)closeRenameCond()">
   <div class="rename-modal">
@@ -747,7 +747,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
     </div>
   </div>
 </div>
- 
+
 <!-- MODAL RENOMMER L'ANNUAIRE -->
 <div class="rename-modal-overlay" id="renameModalOverlay" onclick="closeRenameOnOutside(event)">
   <div class="rename-modal">
@@ -783,7 +783,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
     </div>
   </div>
 </div>
- 
+
 <!-- MODAL ÉDITION MEMBRE -->
 <div id="editMemberModalOverlay" onclick="if(event.target===this)closeEditMemberModal()">
   <div class="modal modal-lg">
@@ -823,7 +823,7 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
     </div>
   </div>
 </div>
- 
+
 <!-- MODAL DÉMARRAGE -->
 <div id="startupModalOverlay">
   <div id="startupModal">
@@ -843,9 +843,9 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
     </div>
   </div>
 </div>
- 
+
 <div class="save-toast" id="saveToast"></div>
- 
+
 <div class="fb-confirm" id="fbConfirm">
   <div class="fb-confirm-inner">
     <div class="fb-confirm-icon" id="fbConfirmIcon">✅</div>
@@ -859,14 +859,14 @@ footer span{font-size:0.76rem;color:rgba(255,255,255,0.6);}
     <div class="fb-confirm-progress-bar" id="fbConfirmBar"></div>
   </div>
 </div>
- 
+
 <div class="fb-status-bar" id="fbStatusBar">
   <div class="fb-status-dot"></div>
   <span class="fb-status-text" id="fbStatusText">Connexion Firebase…</span>
   <span class="fb-status-time" id="fbStatusTime"></span>
   <button class="fb-status-close" onclick="document.getElementById('fbStatusBar').classList.remove('show')">✕</button>
 </div>
- 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 // ════════════════════════════════════════
@@ -914,7 +914,7 @@ async function loadFirebaseSDK() {
     }
   }
 }
- 
+
 // ════════════════════════════════════════
 // DONNÉES & CONSTANTES
 // ════════════════════════════════════════
@@ -934,20 +934,20 @@ const palettes=[
   ['#E05252','rgba(224,82,82,0.13)','rgba(224,82,82,0.35)'],
 ];
 const memberColors=['#4A7CFF','#E05252','#4CAF50','#C9A84C','#9C5FF5','#FF8C42','#00BCD4','#E91E8C'];
- 
+
 const TODAY=new Date(); TODAY.setHours(0,0,0,0);
 document.getElementById('footer-date').textContent='Aujourd\'hui : '+TODAY.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
- 
+
 function daysFromNow(n){const d=new Date(TODAY);d.setDate(d.getDate()+n);return d.toISOString().split('T')[0];}
- 
+
 let companies=[
   {id:1,nom:"BATIBUILD Construction",secteur:"Gros Œuvre & Charpente",adresse:"Zone industrielle, Rue des Artisans",ville:"Casablanca",tel:"+212 522 40 10 00",email:"contact@batibuild.ma",dc:"DC Beni Mellal",villesTravaux:["Beni Mellal","Azilal"],villeTravaux:"Beni Mellal",contratNum:"CTR-2024-0017",objet:"Construction d'un bâtiment administratif R+3 — Lot 2",dateNotif:"2024-01-15",duree:"18 mois",dateExp:daysFromNow(38),conducteurs:[{nom:"Kouassi Jean-Baptiste",tel:"+212 661 11 22 33",role:"Conducteur Principal",teams:[]},{nom:"Diarra Fatou",tel:"+212 662 55 66 77",role:"Conducteur Adjoint",teams:[]}]},
   {id:2,nom:"GBT Travaux Publics",secteur:"VRD & Terrassement",adresse:"Mers Sultan, Bd d'Anfa, Imm. Alpha",ville:"Casablanca",tel:"+212 522 25 30 40",email:"direction@gbt-tp.ma",dc:"DC El Jadida",villesTravaux:["El Jadida","Sidi Bennour"],villeTravaux:"El Jadida",contratNum:"CTR-2023-0089",objet:"Réhabilitation et bitumage de la voirie urbaine — Phase 2",dateNotif:"2023-06-01",duree:"24 mois",dateExp:daysFromNow(-12),conducteurs:[{nom:"N'Guessan Martial",tel:"+212 664 88 99 00",role:"Conducteur de Travaux",teams:[{id:'t1',nom:'Équipe 1',membres:[{nom:'Alami Youssef',prenom:'',cin:'BE123456',tel:'+212 661 11 11 11',qualite:'raccordeur',typeVehicule:'Camionnette',immat:'12345-A-6',gps:'https://maps.google.com/?q=33.5731,-7.5898'},{nom:'Tazi Omar',prenom:'',cin:'BK789012',tel:'+212 662 22 22 22',qualite:'cableur',typeVehicule:'Véhicule léger',immat:'67890-B-7',gps:''}]}]}]},
   {id:3,nom:"AFRICBAT SARL",secteur:"Bâtiment & Finitions",adresse:"Palmier, Rue des Orangers 87",ville:"Casablanca",tel:"+212 522 43 55 60",email:"africbat@africbat.ma",dc:"DC Settat",villesTravaux:["Berrechid"],villeTravaux:"Berrechid",contratNum:"CTR-2025-0003",objet:"Construction de 120 logements sociaux — Programme National de l'Habitat",dateNotif:"2025-02-10",duree:"36 mois",dateExp:"2028-02-10",conducteurs:[{nom:"Traoré Moussa",tel:"+212 661 33 44 55",role:"Conducteur Principal",teams:[]},{nom:"Bamba Awa",tel:"+212 662 77 11 22",role:"Chef de Chantier",teams:[{id:'t2',nom:'Équipe A',membres:[{nom:'Benali Karim',prenom:'',cin:'BJ456789',tel:'+212 663 33 33 33',qualite:'raccordeur',typeVehicule:'Camion benne',immat:'11111-C-2',gps:'https://maps.google.com/?q=33.2316,-8.5007'},{nom:'Filali Hassan',prenom:'',cin:'BE234567',tel:'+212 664 44 44 44',qualite:'raccordeur',typeVehicule:'Camionnette',immat:'22222-D-3',gps:'https://maps.google.com/?q=33.2316,-8.5007'},{nom:'Ouali Samir',prenom:'',cin:'BK345678',tel:'+212 665 55 55 55',qualite:'cableur',typeVehicule:'Véhicule léger',immat:'33333-E-4',gps:''}]},{id:'t3',nom:'Équipe B',membres:[]}]},{nom:"Coulibaly Sékou",tel:"+212 663 99 88 77",role:"Conducteur Adjoint",teams:[]}]}
 ];
- 
+
 let editingId=null, currentFilter='all', searchQuery='';
- 
+
 // ════════════════════════════════════════
 // FIREBASE — CONFIG & INIT
 // ════════════════════════════════════════
@@ -960,7 +960,7 @@ const FB_CONFIG = {
   messagingSenderId: "916943908317",
   appId:             "1:916943908317:web:52520c405dbfa3ec9bda34"
 };
- 
+
 let _db           = null;
 let _companiesRef = null;
 let _titleRef     = null;
@@ -968,7 +968,7 @@ let _fbListening  = false;
 let _lastSaveTime = 0;
 let _fbOk         = false;
 let _saving       = false; // ✅ CORRECTIF 3 — verrou anti-doublon
- 
+
 function initFirebase() {
   if(!window._FB || !window._FB.loaded) {
     showStartupMessage(false,'❌ Firebase indisponible','Scripts Firebase non chargés. Mode local activé.');
@@ -979,14 +979,14 @@ function initFirebase() {
     const app = window._FB.getApps().length
       ? window._FB.getApps()[0]
       : window._FB.initializeApp(FB_CONFIG);
- 
+
     _db           = window._FB.getDatabase(app);
     _companiesRef = window._FB.ref(_db, 'companies');
     _titleRef     = window._FB.ref(_db, 'appTitle');
- 
+
     let _startupDone   = false;
     let _everConnected = false;
- 
+
     window._FB.onValue(window._FB.ref(_db, '.info/connected'), snap => {
       const on = !!snap.val();
       const dot = document.getElementById('connDot');
@@ -1006,20 +1006,20 @@ function initFirebase() {
         if(_everConnected) setStatusBar('🔴 Connexion Firebase perdue', false, now());
       }
     });
- 
+
     setTimeout(()=>{
       if(!_startupDone){ _startupDone=true;
         showStartupMessage(false,'⚠️ Firebase inaccessible','Impossible de joindre Firebase. Mode local activé.');
       }
     }, 12000);
- 
+
     window._FB.set(window._FB.ref(_db,'_ping'),{t:Date.now()})
       .then(()=>{ window._FB.remove(window._FB.ref(_db,'_ping')); })
       .catch(err=>{
         showFbConfirm('fail','❌ Écriture Firebase bloquée',
           'Règles à corriger : Firebase Console → Realtime Database → Règles → ".write": true');
       });
- 
+
     // ✅ CORRECTIF 2 — délai réduit de 5000ms à 800ms
     window._FB.onValue(_companiesRef, snap=>{
       if(Date.now() - _lastSaveTime < 800) return;
@@ -1027,17 +1027,17 @@ function initFirebase() {
       if(data){ companies = Object.values(data).sort((a,b)=>(a.id||0)-(b.id||0)); render(); }
       else saveData(true);
     });
- 
+
     window._FB.onValue(_titleRef, snap=>{ if(snap.val()) applyTitle(snap.val()); });
- 
+
     _fbListening = true;
- 
+
   } catch(e) {
     showStartupMessage(false,'❌ Erreur Firebase',e.message);
     fallbackLocal();
   }
 }
- 
+
 function fallbackLocal() {
   _fbOk = false;
   setStatusBar('⚠️ Firebase indisponible — données locales uniquement', false, now());
@@ -1046,7 +1046,7 @@ function fallbackLocal() {
     if(saved){ const p=JSON.parse(saved); if(Array.isArray(p)&&p.length){ companies=p; render(); } }
   } catch(e){}
 }
- 
+
 // ════════════════════════════════════════
 // SAUVEGARDE — VERSION CORRIGÉE
 // ════════════════════════════════════════
@@ -1055,10 +1055,10 @@ function saveData(silent=false) {
   if(_saving) return;
   _saving = true;
   _lastSaveTime = Date.now();
- 
+
   // Sauvegarde locale en backup
   try { localStorage.setItem('btp_annuaire_backup', JSON.stringify(companies)); } catch(e){}
- 
+
   if(!_fbOk || !_companiesRef || !window._FB){
     _saving = false;
     if(!silent){
@@ -1068,15 +1068,15 @@ function saveData(silent=false) {
     }
     return;
   }
- 
+
   if(!silent){
     showFbConfirm('warn','⏳ Enregistrement en cours…','Envoi vers Firebase…', 20000);
     setStatusBar('Sauvegarde en cours…', true, '');
   }
- 
+
   const obj={};
   companies.forEach(c=>{ obj['c'+c.id]=c; });
- 
+
   // ✅ CORRECTIF 1 — utilise _companiesRef (correct) et non companiesRef (inexistant)
   window._FB.set(_companiesRef, obj)
     .then(()=> window._FB.get(_companiesRef))
@@ -1098,17 +1098,17 @@ function saveData(silent=false) {
       setStatusBar('❌ Échec de sauvegarde Firebase', false, now());
     });
 }
- 
+
 function now(){
   return new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
 }
- 
+
 // ✅ CORRECTIF 1 — une seule version de saveTitleToFirebase, avec les bonnes variables
 function saveTitleToFirebase(name) {
   if(_fbOk && _titleRef && window._FB)
     window._FB.set(_titleRef, name).catch(console.error);
 }
- 
+
 // ✅ CORRECTIF 1 — une seule version de clearData, avec les bonnes variables
 function clearData() {
   if(!confirm('⚠️ Supprimer TOUTES les données pour TOUS les utilisateurs ?\nCette action est irréversible.')) return;
@@ -1118,7 +1118,7 @@ function clearData() {
     localStorage.removeItem('btp_annuaire_backup'); location.reload();
   }
 }
- 
+
 // ✅ CORRECTIF 1 — une seule version de showToast
 function showToast(msg, type='success'){
   const t=document.getElementById('saveToast');
@@ -1129,7 +1129,7 @@ function showToast(msg, type='success'){
   clearTimeout(t._timer);
   t._timer=setTimeout(()=>t.classList.remove('show'), 3500);
 }
- 
+
 // ✅ CORRECTIF 1 — une seule version de confirmRenameAndSync
 function confirmRenameAndSync() {
   const val = document.getElementById('renameInput').value.trim();
@@ -1138,7 +1138,7 @@ function confirmRenameAndSync() {
   saveTitleToFirebase(val);
   closeRenameModal();
 }
- 
+
 // ════════════════════════════════════════
 // UI — BANNIÈRE, STATUT, DÉMARRAGE
 // ════════════════════════════════════════
@@ -1163,7 +1163,7 @@ function hideFbConfirm(){
   if(b) b.classList.remove('show');
   clearTimeout(_confirmTimer);
 }
- 
+
 function showStartupMessage(connected, title, detail) {
   const overlay=document.getElementById('startupModalOverlay');
   const modal=document.getElementById('startupModal');
@@ -1189,7 +1189,7 @@ function closeStartupModal(){
   const m=document.getElementById('startupModalOverlay');
   if(m) m.classList.remove('show');
 }
- 
+
 function setStatusBar(text, ok, time=''){
   const bar=document.getElementById('fbStatusBar');
   const txt=document.getElementById('fbStatusText');
@@ -1200,18 +1200,18 @@ function setStatusBar(text, ok, time=''){
   clearTimeout(bar._timer);
   if(ok) bar._timer=setTimeout(()=>bar.classList.remove('show'),6000);
 }
- 
+
 // ════════════════════════════════════════
 // NAVIGATION
 // ════════════════════════════════════════
 let currentCondRef = null;
- 
+
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
   window.scrollTo(0,0);
 }
- 
+
 function openConducteurPage(companyId, condIndex){
   const c=companies.find(x=>x.id===companyId);
   const cond=c.conducteurs[condIndex];
@@ -1226,7 +1226,7 @@ function openConducteurPage(companyId, condIndex){
   document.getElementById('bc-cond').textContent=cond.nom;
   renderTeams(); showPage('conducteur');
 }
- 
+
 // ════════════════════════════════════════
 // HELPERS
 // ════════════════════════════════════════
@@ -1241,7 +1241,7 @@ function contractStatus(s){
   return{cls:'',badge:`<span class="expiry-badge badge-ok">✅ ${days} j restants</span>`,type:'ok'};
 }
 function genId(){return 't'+Date.now()+Math.random().toString(36).slice(2,6);}
- 
+
 // ════════════════════════════════════════
 // ALERT BANNER
 // ════════════════════════════════════════
@@ -1259,7 +1259,7 @@ function updateAlertBanner(){
       (${fmtDate(c.dateExp)})</div>`;
   }).join('');
 }
- 
+
 // ════════════════════════════════════════
 // RENDER MAIN
 // ════════════════════════════════════════
@@ -1280,7 +1280,7 @@ function render(){
   updateAlertBanner();
   if(filtered.length===0){grid.innerHTML='';empty.classList.add('show');return;}
   empty.classList.remove('show');
- 
+
   grid.innerHTML=filtered.map((c,i)=>{
     const pal=palettes[c.id%palettes.length];
     const ini=c.nom.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
@@ -1306,7 +1306,7 @@ function render(){
           </button>
         </div>`;}).join('')
       :`<div style="color:var(--muted);font-size:0.82rem;text-align:center;padding:8px 0">Aucun conducteur enregistré</div>`;
- 
+
     return`<div class="card ${st.cls}" style="animation-delay:${i*0.07}s;background:${pal[1]};border-color:${pal[2]};">
       <div class="card-header">
         <div class="company-avatar" style="background:${pal[0]}20;border-color:${pal[0]}40;color:${pal[0]}">${ini}</div>
@@ -1371,7 +1371,7 @@ function render(){
     </div>`;
   }).join('');
 }
- 
+
 // ════════════════════════════════════════
 // RENDER TEAMS
 // ════════════════════════════════════════
@@ -1428,7 +1428,7 @@ function renderTeams(){
     </div>`;
   }).join('');
 }
- 
+
 // ════════════════════════════════════════
 // TEAM CRUD
 // ════════════════════════════════════════
@@ -1451,7 +1451,7 @@ function deleteTeam(ti){
   c.conducteurs[currentCondRef.condIndex].teams.splice(ti,1);
   saveData();renderTeams();
 }
- 
+
 // ════════════════════════════════════════
 // MEMBER CRUD
 // ════════════════════════════════════════
@@ -1483,18 +1483,18 @@ function deleteMember(ti,mi){
   c.conducteurs[currentCondRef.condIndex].teams[ti].membres.splice(mi,1);
   saveData();renderTeams();
 }
- 
+
 // ════════════════════════════════════════
 // ÉDITION MEMBRE — bouton ✏️
 // ════════════════════════════════════════
 let _editMemberRef = null; // {ti, mi}
- 
+
 function openEditMemberModal(ti, mi) {
   const c    = companies.find(x=>x.id===currentCondRef.companyId);
   const team = c.conducteurs[currentCondRef.condIndex].teams[ti];
   const m    = team.membres[mi];
   _editMemberRef = {ti, mi};
- 
+
   document.getElementById('em-nom').value         = m.nom || '';
   document.getElementById('em-cin').value         = m.cin || '';
   document.getElementById('em-tel').value         = m.tel || '';
@@ -1502,25 +1502,25 @@ function openEditMemberModal(ti, mi) {
   document.getElementById('em-typeVehicule').value= m.typeVehicule || '';
   document.getElementById('em-immat').value       = m.immat || '';
   document.getElementById('em-gps').value         = m.gps || '';
- 
+
   document.getElementById('editMemberModalOverlay').classList.add('open');
   setTimeout(()=>{ const i=document.getElementById('em-nom'); i.focus(); i.select(); }, 120);
 }
- 
+
 function closeEditMemberModal() {
   document.getElementById('editMemberModalOverlay').classList.remove('open');
   _editMemberRef = null;
 }
- 
+
 function confirmEditMember() {
   const nom = document.getElementById('em-nom').value.trim();
   if(!nom){ document.getElementById('em-nom').focus(); return; }
   if(!_editMemberRef) return;
- 
+
   const c    = companies.find(x=>x.id===currentCondRef.companyId);
   const team = c.conducteurs[currentCondRef.condIndex].teams[_editMemberRef.ti];
   const m    = team.membres[_editMemberRef.mi];
- 
+
   m.nom         = nom;
   m.cin         = document.getElementById('em-cin').value.trim();
   m.tel         = document.getElementById('em-tel').value.trim();
@@ -1528,12 +1528,12 @@ function confirmEditMember() {
   m.typeVehicule= document.getElementById('em-typeVehicule').value.trim();
   m.immat       = document.getElementById('em-immat').value.trim();
   m.gps         = document.getElementById('em-gps').value.trim();
- 
+
   closeEditMemberModal();
   saveData();
   renderTeams();
 }
- 
+
 // ════════════════════════════════════════
 // MULTI-SELECT VILLES
 // ════════════════════════════════════════
@@ -1590,7 +1590,7 @@ function setSelectedVilles(villes){
   });
   updateVilleDisplay();
 }
- 
+
 // ════════════════════════════════════════
 // MAIN COMPANY MODAL
 // ════════════════════════════════════════
@@ -1602,7 +1602,7 @@ function addCondField(data={}){
   document.getElementById('condFields').appendChild(div);
 }
 function removeCondField(id){const el=document.getElementById('cond-row-'+id);if(el)el.remove();}
- 
+
 function openModal(prefill=null){
   editingId=prefill?prefill.id:null;
   document.getElementById('modalTitle').textContent=prefill?'Modifier la société':'Nouvelle société';
@@ -1627,7 +1627,7 @@ function closeModal(){document.getElementById('modalOverlay').classList.remove('
 function closeModalOnOutside(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
 function editCompany(id){const c=companies.find(x=>x.id===id);if(c)openModal(c);}
 function deleteCompany(id){if(confirm('Supprimer cette société ?')){companies=companies.filter(c=>c.id!==id);saveData();render();}}
- 
+
 function saveCompany(){
   const nom=document.getElementById('f-nom').value.trim();
   if(!nom){alert('Le nom de la société est requis.');return;}
@@ -1648,10 +1648,10 @@ function saveCompany(){
   else{const newId=companies.length?Math.max(...companies.map(c=>c.id))+1:1;companies.push({...data,id:newId});}
   closeModal();saveData();render();
 }
- 
+
 function filterCards(){searchQuery=document.getElementById('searchInput').value;render();}
 function setFilter(f,btn){currentFilter=f;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
- 
+
 function autoCalcExpiry(){
   const notif=document.getElementById('f-date-notif').value;
   const duree=parseInt(document.getElementById('f-duree').value);
@@ -1663,7 +1663,7 @@ function autoCalcExpiry(){
     hidden.value=iso;label.textContent=fmtDate(iso);label.style.color='var(--green)';
   } else {hidden.value='';label.textContent='Saisir date de notification + délai';label.style.color='var(--muted)';}
 }
- 
+
 // ════════════════════════════════════════
 // RENOMMER CONDUCTEUR
 // ════════════════════════════════════════
@@ -1696,7 +1696,7 @@ function confirmRenameCond(){
     document.getElementById('detail-avatar').textContent=nom.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
   }
 }
- 
+
 // ════════════════════════════════════════
 // TITRE ANNUAIRE
 // ════════════════════════════════════════
@@ -1717,9 +1717,9 @@ function openRenameModal(){
 }
 function closeRenameModal(){document.getElementById('renameModalOverlay').classList.remove('open');}
 function closeRenameOnOutside(e){if(e.target===document.getElementById('renameModalOverlay'))closeRenameModal();}
- 
+
 (function(){try{const s=localStorage.getItem('annuaire_title');if(s)applyTitle(s);}catch(e){}})();
- 
+
 // ════════════════════════════════════════
 // SAVE DIALOG & EXPORT EXCEL
 // ════════════════════════════════════════
@@ -1762,7 +1762,7 @@ async function confirmSave(){
     setTimeout(()=>URL.revokeObjectURL(url),1000);closeSaveDialog();
   }catch(e){console.error(e);closeSaveDialog();}
 }
- 
+
 function exportAllExcel(){
   const date=new Date().toISOString().split('T')[0];
   const totalMembres=companies.reduce((a,c)=>a+c.conducteurs.reduce((b,k)=>b+(k.teams||[]).reduce((d,t)=>d+(t.membres||[]).length,0),0),0);
@@ -1818,19 +1818,19 @@ function styleHeader(ws,ncols){
   if(!ws['!ref'])return;
   for(let C=0;C<ncols;C++){const addr=XLSX.utils.encode_cell({r:0,c:C});if(ws[addr])ws[addr].s={font:{bold:true,color:{rgb:'C9A84C'}},fill:{fgColor:{rgb:'0D0F14'}}};}
 }
- 
+
 // ════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════
 render();
- 
+
 (function(){
   const overlay=document.getElementById('startupModalOverlay');
   const time=document.getElementById('smTime');
   if(overlay)overlay.classList.add('show');
   if(time)time.textContent='Ouverture à '+new Date().toLocaleTimeString('fr-FR');
 })();
- 
+
 window.addEventListener('load', async()=>{
   const ok=await loadFirebaseSDK();
   if(ok){ setTimeout(()=>initFirebase(),200); }
@@ -1842,4 +1842,3 @@ window.addEventListener('load', async()=>{
 </script>
 </body>
 </html>
- 
